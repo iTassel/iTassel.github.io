@@ -15,15 +15,13 @@
 
 
 
-<meta name="description" content="Use-After-FreeUAF漏洞，通常在free某段内存后，由于”悬垂指针”引起的漏洞，是一种内存破坏漏洞">
 <meta name="keywords" content="FmtStr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Use After Free">
 <meta property="og:url" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;2019&#x2F;12&#x2F;09&#x2F;Use_After_Free&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="Use-After-FreeUAF漏洞，通常在free某段内存后，由于”悬垂指针”引起的漏洞，是一种内存破坏漏洞">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-17T11:32:35.392Z">
+<meta property="og:updated_time" content="2019-12-17T11:40:23.068Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -289,8 +287,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Use-After-Free"><a href="#Use-After-Free" class="headerlink" title="Use-After-Free"></a>Use-After-Free</h2><p>UAF漏洞，通常在free某段内存后，由于”悬垂指针”引起的漏洞，是一种内存破坏漏洞</p>
+        <hr>
 <a id="more"></a>
+<h2 id="Use-After-Free"><a href="#Use-After-Free" class="headerlink" title="Use-After-Free"></a>Use-After-Free</h2><p>UAF漏洞，通常在free某段内存后，由于”悬垂指针”引起的漏洞，是一种内存破坏漏洞</p>
 <h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>首次碰到有堆分配的题目，无从下手，看过WP才知道，还是我Tcl，下面是我自己写的WP</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ checksec time_formatter</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     amd64-64-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    Canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x400000)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    FORTIFY:  Enabled</span></pre></td></tr></table></figure>
 <p>可以通过UAF漏洞进行利用，从而攻击成功,其中strdup分配空间，选择5时会free分配的空间,导致形成悬垂指针</p>

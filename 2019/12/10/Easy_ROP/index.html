@@ -15,16 +15,14 @@
 
 
 
-<meta name="description" content="ROPROP是一种攻击方式，通常利用程序中的一小段对寄存器的操作进行利用，ROP的进阶还有更大的利用空间，这里记录一个XCTF_Pwn中简单的ROP攻击">
 <meta name="keywords" content="ROP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Easy ROP">
 <meta property="og:url" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;2019&#x2F;12&#x2F;10&#x2F;Easy_ROP&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="ROPROP是一种攻击方式，通常利用程序中的一小段对寄存器的操作进行利用，ROP的进阶还有更大的利用空间，这里记录一个XCTF_Pwn中简单的ROP攻击">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;res&#x2F;2.png">
-<meta property="og:updated_time" content="2019-12-17T11:37:13.080Z">
+<meta property="og:updated_time" content="2019-12-17T11:40:27.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;res&#x2F;2.png">
 
@@ -291,8 +289,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="ROP"><a href="#ROP" class="headerlink" title="ROP"></a>ROP</h2><p>ROP是一种攻击方式，通常利用程序中的一小段对寄存器的操作进行利用，ROP的进阶还有更大的利用空间，这里记录一个XCTF_Pwn中简单的ROP攻击</p>
+        <hr>
 <a id="more"></a>
+<h2 id="ROP"><a href="#ROP" class="headerlink" title="ROP"></a>ROP</h2><p>ROP是一种攻击方式，通常利用程序中的一小段对寄存器的操作进行利用，ROP的进阶还有更大的利用空间，这里记录一个XCTF_Pwn中简单的ROP攻击</p>
 <h3 id="保护措施"><a href="#保护措施" class="headerlink" title="保护措施"></a>保护措施</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># checksec pwn_100</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     amd64-64-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    No canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x400000)</span></pre></td></tr></table></figure>
 <p>程序关闭了栈保护和地址随机化，难度降低了很多</p>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>分析可知需要输入200个字节的长度，而写入的首地址距离RBP仅仅0x40长度，典型的栈溢出，而我们要做的就是将/bin/sh传入某个地方，并调用system函数。<br>但是仅一个read函数，程序也没有后门函数，或者system，/bin/sh的存在，此处我们可以先动态调式一番，然后vmmap查看内存地址中的rwx权限<br><img src="/res/2.png" alt=""><br>在0x601000地址处具有w权限，而程序又没有PIE，那么这个地址就是程序的绝对地址，我们可以将/bin/sh直接写入到此处<br>此外，我们还需要选择我们需要的gadget构建ROPchain，利用read函数将/bin/sh写入0x601000，而我们需要控制edi和edx以及rsi，所以我们在初始化时init处取得<br>pop_rdi_ret 可以通过命令 ROPgadget –binary ./程序名 –only ‘pop|ret’ 取到地址</p>

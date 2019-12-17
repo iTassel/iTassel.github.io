@@ -15,15 +15,13 @@
 
 
 
-<meta name="description" content="Blind_Got">
 <meta name="keywords" content="FmtStr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FmtStr Blind Got">
 <meta property="og:url" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;2019&#x2F;12&#x2F;16&#x2F;FmtStr_Blind_Got&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="Blind_Got">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-17T11:37:08.580Z">
+<meta property="og:updated_time" content="2019-12-17T11:41:51.952Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -289,8 +287,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Blind-Got"><a href="#Blind-Got" class="headerlink" title="Blind_Got"></a>Blind_Got</h2><a id="more"></a>
-<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Code:  </p>
+        <hr>
+<a id="more"></a>
+<h2 id="Blind-Got"><a href="#Blind-Got" class="headerlink" title="Blind_Got"></a>Blind_Got</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>Code:  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">int <span class="function"><span class="title">main</span></span>() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  char input[128];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">while</span> (1) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">read</span>(0, input, 128);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">printf</span>(input);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    fflush(stdout);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">return</span> 0;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 <p>利用Gcc编译，编译的同时关闭pie和canary保护  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gcc -fno-stack-protector -no-pie main.c -o blind</span></pre></td></tr></table></figure>
