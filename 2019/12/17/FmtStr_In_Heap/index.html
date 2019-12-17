@@ -15,13 +15,15 @@
 
 
 
+<meta name="description" content="FmtStr In Heap">
 <meta name="keywords" content="FmtStr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FmtStr In Heap">
 <meta property="og:url" content="http:&#x2F;&#x2F;itassel.github.io&#x2F;2019&#x2F;12&#x2F;17&#x2F;FmtStr_In_Heap&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="FmtStr In Heap">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-17T14:00:48.880Z">
+<meta property="og:updated_time" content="2019-12-17T14:03:49.124Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -289,9 +291,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <hr>
-<a id="more"></a>
-<h2 id="FmtStr-In-Heap"><a href="#FmtStr-In-Heap" class="headerlink" title="FmtStr In Heap"></a>FmtStr In Heap</h2><hr>
+        <h2 id="FmtStr-In-Heap"><a href="#FmtStr-In-Heap" class="headerlink" title="FmtStr In Heap"></a>FmtStr In Heap</h2><a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># checksec contacts</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     i386-32-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    Canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x8048000)</span></pre></td></tr></table></figure>
 <p>查看一番，32位程序，地址随机化未开启，栈保护开启<br>然后IDA分析，发现四个函数，分别为构造，删除，修改，打印联系人，而在第四个函数里面，打印最后一个值时，含有FmtStr漏洞可利用<br>在此处，似乎之前FmtStr的利用方法都无法获得/bin/sh权限，修改Got表会因为多处使用printf函数而导致崩溃,但是我没试过，我之前发布的那个FmtStr In BSS应该也可以，等后面我做出来后再发出来  </p>
 <hr>
