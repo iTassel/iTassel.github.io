@@ -436,11 +436,11 @@
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失了~ " + originTitle;
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失啦~ " + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现了～" + originTitle;
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现啦～" + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);
