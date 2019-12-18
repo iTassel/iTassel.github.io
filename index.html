@@ -167,6 +167,8 @@
                         
                             <li><a href="/">主页</a></li>
                         
+                            <li><a href="/Team/">团队</a></li>
+                        
                             <li><a href="/archives/">所有文章</a></li>
                         
                         </ul>
@@ -208,7 +210,7 @@
                 
                 <section class="switch-part switch-part4">
                 
-                    <div id="js-aboutme">2020年即将诞生的新笨比</div>
+                    <div id="js-aboutme">2020年诞生的笨比，什么都不会，什么也不能做</div>
                 </section>
                 
             </div>
@@ -235,6 +237,8 @@
                 <ul>
                 
                     <li><a href="/">主页</a></li>
+                
+                    <li><a href="/Team/">团队</a></li>
                 
                     <li><a href="/archives/">所有文章</a></li>
                 
@@ -651,11 +655,11 @@
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "(つェ⊂) 我藏好了哦~ " + originTitle;
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失了~ " + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "(*´∇｀*) 被你发现啦~ " + originTitle;
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现了～" + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);
