@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="FMYY&#39;s Blog">
 <meta property="og:description" content="NCTF_WcyVM">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-20T14:06:56.761Z">
+<meta property="og:updated_time" content="2019-12-20T14:19:33.273Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -252,7 +252,7 @@
       
           
         <h2 id="NCTF-WcyVM"><a href="#NCTF-WcyVM" class="headerlink" title="NCTF_WcyVM"></a>NCTF_WcyVM</h2><a id="more"></a>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先拿到<a href="./WcyVM.txt">程序</a>，用IDA运行，F5静态分析，发现if判断其中有一个函数<br>进去，简单的描述一下:<br>1.定义了一些变量，其中某个数组的内容copy给了dest<br>2.while循环里面有个Switch-case结构，典型的VM题<br>3.Case100里面有个运算，决定上层函数的返回值，即程序运行的输出结果</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先拿到<a href="./WcyVM">程序</a>，用IDA运行，F5静态分析，发现if判断其中有一个函数<br>进去，简单的描述一下:<br>1.定义了一些变量，其中某个数组的内容copy给了dest<br>2.while循环里面有个Switch-case结构，典型的VM题<br>3.Case100里面有个运算，决定上层函数的返回值，即程序运行的输出结果</p>
 <hr>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.VM题我们需要对应分析，首先找到程序对应的Opcode，这里我们可以很轻易知道dest指向Opcode的值，可利用IDA对作为VM寄存器的变量重新命名，利用分析<br>2.最后将Opcode与Switch结构对应翻译<br>3.对Case100函数进行逆运算，从而得到正确的Flag</p>
 <h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>第一步，翻译Switch-Case</p>
