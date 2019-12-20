@@ -1,0 +1,16 @@
+set $i=0
+set $total=256
+while($i<$total)
+  b *0x80485b4 #取随机值处
+  b *0x8048704 #打印字节处
+  run T
+  set $i=$i+1
+  set *(char*)($ebp-0xC)=$i
+  continue
+  if ($eax==0x95)
+    print $i, $i
+    x/256xb $esp+0x1C #main函数里，打印字符串的栈地址
+    set $i=256
+  end
+  stop
+end
