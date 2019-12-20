@@ -1,0 +1,45 @@
+0	mov R0 0
+3	mov R2 70
+6	jmp 21
+8	push R0
+10	pop R1
+12	R0 = getchar()
+13	push R0
+15	push R1
+17	pop R0
+19	inc R0
+21	if R0==R2
+		mov Rx 0x80
+	if R0 <R2
+		mov Rx 0x40
+	if R0 >R2
+		mov Rx 0x20
+24	and Rx 80h
+	test Rx Rx
+	jnz 8
+26	mov R0 0
+29	mov R2 71
+32	jmp 70
+34	push R0
+36	lea R1 [R5]
+39	mul R0 4
+42	sub R1 R0
+45	mov R0 R1
+48	mov R0 [R0]
+51	mul R0 110
+54	add R0 99
+57	xor R0 116
+60	add R0 102
+63	mov [R1] R0
+66	pop R0
+68	inc R0
+70	if R0==R2
+		mov Rx 0x80
+	if R0 <R2
+		mov Rx 0x40
+	if R0 >R2
+		mov Rx 0x20
+73	and Rx 80h
+	test Rx Rx
+	jnz 34
+75	Ret
