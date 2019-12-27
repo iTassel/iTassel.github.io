@@ -15,12 +15,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="FMYY&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;archives&#x2F;2019&#x2F;12&#x2F;index.html">
+<meta name="description" content="ROP_Attack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROP_Attack">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;27&#x2F;ROP_Attack&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="ROP_Attack">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;27&#x2F;ROP_Attack&#x2F;ROP_Attack&#x2F;split.png">
+<meta property="og:updated_time" content="2019-12-27T07:28:47.852Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;27&#x2F;ROP_Attack&#x2F;ROP_Attack&#x2F;split.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2019/12 | FMYY&#39;s Blog</title>
+<title>ROP_Attack | FMYY&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -62,8 +67,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -207,283 +212,138 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-ROP_Attack" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2019/12/27/ROP_Attack/" class="article-date">
+      <time datetime="2019-12-27T07:20:56.000Z" itemprop="datePublished">2019-12-27</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ROP_Attack
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/27/ROP_Attack/" class="archive-article-date">
-      <time datetime="2019-12-27T07:20:56.000Z" itemprop="datePublished">12-27</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/27/ROP_Attack/">ROP_Attack</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+        <h2 id="ROP-Attack"><a href="#ROP-Attack" class="headerlink" title="ROP_Attack"></a>ROP_Attack</h2><a id="more"></a>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">modify</span><span class="params">(padding,rbx,rbp,r12,r13,r14,r15)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># pop rbx,rbp,r12,r13,r14,r15</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># rbx should be 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># rbp should be 1 ,enable not to jump</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># r12 should be the function we want to call</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># rdi = edi = r15d</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># rsi = r14</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	<span class="comment"># rdx = r13</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	payload = padding * <span class="string">'A'</span> + p64(gadget_one) + p64(rbx) + p64(rbp) + p64(r12) + p64(r13<span class="comment">#) + p64(r14) + p64(r15)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">	payload += p64(gadget_two) + p64(<span class="number">0</span>) * (<span class="number">6</span> + <span class="number">1</span>) + p64(start_addr)</span></pre></td></tr></table></figure>
+<h3 id="Development"><a href="#Development" class="headerlink" title="Development"></a>Development</h3><p>There are two ways to decrease the len of payload,then we are able to build the evil code under limited length</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">In the front of <span class="string">'cmp rbx rbp'</span>,we can control the rbp <span class="keyword">and</span> rbx to be equal to decrease the len of payload  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Use the ROP many times to build the evil code successfully</span></pre></td></tr></table></figure>
+<h3 id="Split"><a href="#Split" class="headerlink" title="Split"></a>Split</h3><p>We can split asm_instructions into serveral smaller pieces.<br>For example,split ‘pop r15,ret’ into ‘pop rdi,ret’<br><img src="./ROP_Attack/split.png" alt=""></p>
+<h3 id="Ret2reg"><a href="#Ret2reg" class="headerlink" title="Ret2reg"></a>Ret2reg</h3><p>Writing the evil code into some addres the can be executed,then we modify EIP [the address behind of ‘jmp’ or ‘call’]into the address of shellcode. </p>
+<h3 id="Blind-ROP"><a href="#Blind-ROP" class="headerlink" title="Blind ROP"></a>Blind ROP</h3>
+      
+    </div>
+    
   </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/12/21/Reverse-BOX/">
+                    Reverse_BOX
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ROP-Attack"><span class="toc-number">1.</span> <span class="toc-text">ROP_Attack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Development"><span class="toc-number">1.2.</span> <span class="toc-text">Development</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Split"><span class="toc-number">1.3.</span> <span class="toc-text">Split</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ret2reg"><span class="toc-number">1.4.</span> <span class="toc-text">Ret2reg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blind-ROP"><span class="toc-number">1.5.</span> <span class="toc-text">Blind ROP</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
     
+<div class="share">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/21/Reverse-BOX/" class="archive-article-date">
-      <time datetime="2019-12-20T16:44:40.000Z" itemprop="datePublished">12-21</time>
-</a>
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/21/Reverse-BOX/">Reverse_BOX</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse/" rel="tag">Reverse</a></li></ul>
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/12/21/Reverse-BOX/" title="Next: Reverse_BOX">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/20/WcyVM/" class="archive-article-date">
-      <time datetime="2019-12-20T07:42:19.000Z" itemprop="datePublished">12-20</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/ROP_Attack/">ROP_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/Easy_ROP/">Easy ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/XCTF%E5%88%B7%E9%A2%98/">XCTF刷题练习</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/20/WcyVM/">NCTF_WcyVM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reverse-VM/" rel="tag">Reverse_VM</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/17/FmtStr_In_Heap/" class="archive-article-date">
-      <time datetime="2019-12-17T11:35:15.000Z" itemprop="datePublished">12-17</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/17/FmtStr_In_Heap/">FmtStr In Heap</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FmtStr/" rel="tag">FmtStr</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/16/FmtStr_Blind_Got/" class="archive-article-date">
-      <time datetime="2019-12-16T13:20:22.000Z" itemprop="datePublished">12-16</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/16/FmtStr_Blind_Got/">FmtStr Blind Got</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FmtStr/" rel="tag">FmtStr</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/10/Easy_ROP/" class="archive-article-date">
-      <time datetime="2019-12-10T15:17:11.000Z" itemprop="datePublished">12-10</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/10/Easy_ROP/">Easy ROP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROP/" rel="tag">ROP</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/09/XCTF%E5%88%B7%E9%A2%98/" class="archive-article-date">
-      <time datetime="2019-12-09T09:13:50.000Z" itemprop="datePublished">12-09</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/09/XCTF%E5%88%B7%E9%A2%98/">XCTF刷题练习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XCTF/" rel="tag">XCTF</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/12/08/FmtStr_In_Bss/" class="archive-article-date">
-      <time datetime="2019-12-08T10:51:24.000Z" itemprop="datePublished">12-08</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/08/FmtStr_In_Bss/">FmtStr In BSS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FmtStr/" rel="tag">FmtStr</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
