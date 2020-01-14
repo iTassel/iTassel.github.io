@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="风沐云烟" />
+
+
+
+<meta name="description" content="JUMP_SLOT">
+<meta name="keywords" content="ROP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JUMP_SLOT">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;index.html">
+<meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="JUMP_SLOT">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;write-plt.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;PLT.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;rel_plt.png">
+<meta property="og:updated_time" content="2020-01-14T16:40:58.918Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;write-plt.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="FMYY&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>JUMP_SLOT | FMYY&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5df0a1123845c380"></script>
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">风沐云烟</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/Team/">团队</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:itassel@outlook.com" target="_blank" rel="noopener" title="Email"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" target="_blank" rel="noopener" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://caoyi.site" target="_blank" rel="noopener">CaoYi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">2020年诞生的笨比，什么都不会，什么也不能做</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">风沐云烟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">风沐云烟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/Team/">团队</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:itassel@outlook.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-StackOverFlow/Advanced-ROP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/01/15/StackOverFlow/Advanced-ROP/" class="article-date">
+      <time datetime="2020-01-14T16:33:11.000Z" itemprop="datePublished">2020-01-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JUMP_SLOT
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROP/" rel="tag">ROP</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JUMP-SLOT"><a href="#JUMP-SLOT" class="headerlink" title="JUMP_SLOT"></a>JUMP_SLOT</h2><a id="more"></a>
+<h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>在ELF文件里面，当函数是动态链接时，那么可能会有延迟绑定，第一步会lookup绝对地址，写入全局偏移表中函数GOT地址里面，其中会经历几个步骤，通过必要的信息确定最后的实际函数地址<br>[1].rel.plt节是用于函数重定位，.rel.dyn节是用于变量重定位<br>[2].got节保存全局变量偏移表，.got.plt节保存全局函数偏移表。.got.plt对应着Elf32_Rel结构中r_offset的值.<br>[3].dynsym节包含了动态链接符号表。Elf32_Sym[num]中的num对应着ELF32_R_SYM(Elf32_Rel-&gt;r_info).<br>[4].dynstr节包含了动态链接的字符串。这个节以\x00作为开始和结尾，中间每个字符串也以\x00间隔.<br>[5].plt节是过程链接表。过程链接表把位置独立的函数调用重定向到绝对位置.  </p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>此次使用32位ELF文件介绍  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">readelf -r main</span></pre></td></tr></table></figure>
+<p>r_offset:  0x0804a01c<br>r_info:  0x607  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">objdump -d -j .plt main</span></pre></td></tr></table></figure>
+<p>plt[0]:  0x08048380<br>index_offset:  0x20(write_plt)  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">objdump -d -j .rel.plt main</span></pre></td></tr></table></figure>
+<p>rel.plt:  0x08048330  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">objdump -s -j .dynsym main</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">objdump -s -j .dynstr main</span></pre></td></tr></table></figure>
+<p>.dynsym:  0x080481d8<br>.dynstr:  0x08048278<br>准备工作完成  </p>
+<hr>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>在第一次调用write函数的时候，其实GOT表里面没有加载write函数的实际地址，其中保存的是EIP+4的位置，即”push 0x20”的EIP<br><img src="./SLOT/write-plt.png" alt=""><br>程序首先将index_offset 入栈<br>继续令 link_map=*(GOT+4) 入栈<br>最后转到 _dl_runtime_resolve 处执行<br>程序相当于执行了 _dl_runtime_resolve(link_map, reloc_arg)，完成符号解析，写入write函数的实际地址到GOT里面，随后控制权交给write函数<br><img src="./SLOT/PLT.png" alt=""><br>而 write_got 地址即为 .rel.plt + index_offset  </p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">	Elf32_Addr	r_offset;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">	Elf32_Word	r_info;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">&#125; Elf32_Rel;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	Elf32_Addr		r_offset;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	Elf32_Word		r_info;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	Elf32_Sword	r_addend;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">&#125; Elf32_Rela;</span></pre></td></tr></table></figure>
+<p>32位用Elf32_Rel，64位用Elf32_Rela<br><img src="./SLOT/rel_plt.png" alt=""><br>对r_info而言，Elf32_Sym[ELF32_R_SYM(i)] 对应着函数的符号信息，此处则可利用伪造符号信息从而令程序执行另外的函数<br>r_info 末尾的 7代表 延迟绑定，而在_dl_fixup函数中，会验证是否为7，判断是否为延迟绑定来确定是否继续运行  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#define ELF32_R_SYM(i)    ((i)&gt;&gt;8)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#define ELF32_R_TYPE(i)   ((unsigned char)(i))</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#define ELF32_R_INFO(s,t) (((s)&lt;&lt;8)+(unsigned char)(t))</span></span></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果我们需要进行攻击利用，首先在函数首次调用的时候，伪造index_offset 从而令reloc在我们可控的区域，然后伪造r_info,令符号信息 也位于我们可控的区域，那么即可达到攻击的效果.</p>
+<h3 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h3><p>[1]._dl_fixup函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">_dl_fixup(struct link_map *l, ElfW(Word) reloc_arg)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 首先通过参数reloc_arg计算重定位入口，这里的JMPREL即.rel.plt，reloc_offset即reloc_arg</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> PLTREL *<span class="keyword">const</span> reloc = (<span class="keyword">const</span> <span class="keyword">void</span> *) (D_PTR (l, l_info[DT_JMPREL]) + reloc_offset);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 然后通过reloc-&gt;r_info找到.dynsym中对应的条目</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">const</span> <span class="title">ElfW</span><span class="params">(Sym)</span> *sym </span>= &amp;symtab[ELFW(R_SYM) (reloc-&gt;r_info)];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 这里还会检查reloc-&gt;r_info的最低位是不是R_386_JUMP_SLOT=7</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    assert (ELFW(R_TYPE)(reloc-&gt;r_info) == ELF_MACHINE_JMP_SLOT);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 接着通过strtab+sym-&gt;st_name找到符号表字符串，result为libc基地址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    result = _dl_lookup_symbol_x (strtab + sym-&gt;st_name, l, &amp;sym, l-&gt;l_scope, version, ELF_RTYPE_CLASS_PLT, flags, <span class="literal">NULL</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// value为libc基址加上要解析函数的偏移地址，也即实际地址</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    value = DL_FIXUP_MAKE_VALUE (result, sym ? (LOOKUP_VALUE_ADDRESS (result) + sym-&gt;st_value) : <span class="number">0</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 最后把value写入相应的GOT表条目中</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">return</span> elf_machine_fixup_plt (l, result, reloc, rel_addr, value);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">[2].</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">r_offset:	此成员给出了需要重定位的位置。对于一个可重定位文件而言，此值是从需要重定位的符号所在节区头部开始到将被重定位的位置之间的字节偏移。对于可执行文件或者共享目标文件而言，其取值是需要重定位的虚拟地址，一般而言，也就是说我们所说的 GOT 表的地址。  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">r_info:	此成员给出需要重定位的符号的符号表索引，以及相应的重定位类型。 例如一个调用指令的重定位项将包含被调用函数的符号表索引。如果索引是 STN_UNDEF，那么重定位使用 0 作为“符号值”。此外，重定位类型是和处理器相关的。  </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">r_addend:	此成员给出一个常量补齐，用来计算将被填充到可重定位字段的数值。</span></pre></td></tr></table></figure>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="./SLOT/main">程序</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/01/13/Seccomp/Warm-UP/">
+                    Warm_UP
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JUMP-SLOT"><span class="toc-number">1.</span> <span class="toc-text">JUMP_SLOT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解"><span class="toc-number">1.1.</span> <span class="toc-text">了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-number">1.5.</span> <span class="toc-text">资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">1.6.</span> <span class="toc-text">下载</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/01/13/Seccomp/Warm-UP/" title="Next: Warm_UP">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/StackOverFlow/Advanced-ROP/">JUMP_SLOT</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Warm-UP/">Warm_UP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/ROP_Attack/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/Easy_ROP/">Easy ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2020 风沐云烟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 7;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失啦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现啦～" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
