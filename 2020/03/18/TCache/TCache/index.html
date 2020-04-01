@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.">
+<meta name="description" content="写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.后续会不定时更新此栏.">
 <meta name="keywords" content="TCache">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCache">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;03&#x2F;18&#x2F;TCache&#x2F;TCache&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.">
+<meta property="og:description" content="写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.后续会不定时更新此栏.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;03&#x2F;18&#x2F;TCache&#x2F;TCache&#x2F;tcache_fastbin.png">
-<meta property="og:updated_time" content="2020-03-19T17:11:32.123Z">
+<meta property="og:updated_time" content="2020-04-01T18:13:00.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;03&#x2F;18&#x2F;TCache&#x2F;TCache&#x2F;tcache_fastbin.png">
 
@@ -255,7 +255,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.</p>
+        <p>写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.<br>后续会不定时更新此栏.   </p>
 <a id="more"></a>
 <p>由于本地环境为KALI的2.29版本,因此利用了加载指定LIBC文件运行调试，相关细节点击<a href="https://bbs.pediy.com/thread-225849.htm" target="_blank" rel="noopener">此处</a></p>
 <h2 id="children-tcache"><a href="#children-tcache" class="headerlink" title="children_tcache"></a>children_tcache</h2><p>HITCON 2018的题,有null by one漏洞,通过overlap以取得堆块重叠,然后在malloc_hook上写OG,关键点在于利用strcpy清除chunk2的presize域</p>
