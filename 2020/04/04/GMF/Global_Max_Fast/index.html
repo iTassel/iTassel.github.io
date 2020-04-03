@@ -14,15 +14,16 @@
 <meta name="author" content="风沐云烟" />
 
 
-    
-    
 
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="FMYY&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;index.html">
+<meta name="description" content="逐渐补充一些不常见的利用方式 baby_arena_BCTF2018libc-2.23的环境,简单泄漏libc_base,然后利用login处的任意写,将global_max_fast改为’admin’,将申请到的0x1400的块大小释放既可覆盖_IO_list_all指针指向0x1400的堆块,只需要将fake_IO布置到其中,然后vtable+0x18令为one_gadget,由于不易泄漏he">
+<meta name="keywords" content="Global_Max_Fast">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Global_Max_Fast">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;04&#x2F;04&#x2F;GMF&#x2F;Global_Max_Fast&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="逐渐补充一些不常见的利用方式 baby_arena_BCTF2018libc-2.23的环境,简单泄漏libc_base,然后利用login处的任意写,将global_max_fast改为’admin’,将申请到的0x1400的块大小释放既可覆盖_IO_list_all指针指向0x1400的堆块,只需要将fake_IO布置到其中,然后vtable+0x18令为one_gadget,由于不易泄漏he">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-04-03T16:30:49.703Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -51,13 +52,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>FMYY&#39;s Blog</title>
+<title>Global_Max_Fast | FMYY&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,8 +65,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -214,77 +213,7 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-随笔/Pwn随笔" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/" class="article-date">
-      <time datetime="2019-12-09T09:13:50.000Z" itemprop="datePublished">2019-12-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>做到哪个题写哪个题,难度不一,内容没有先后顺序</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-        <div class="article-pop-out tagcloud">
-          <a class="">置顶</a>
-        </div>
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-GMF/Global_Max_Fast" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-GMF/Global_Max_Fast" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2020/04/04/GMF/Global_Max_Fast/" class="article-date">
@@ -302,12 +231,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a>
+    <h1 class="article-title" itemprop="name">
+      Global_Max_Fast
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Global-Max-Fast/" rel="tag">Global_Max_Fast</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -322,549 +262,92 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Global-Max-Fast/" rel="tag">Global_Max_Fast</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-IO_FILE/IO_FILE" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/31/IO_FILE/IO_FILE/" class="article-date">
-      <time datetime="2020-03-31T07:11:18.000Z" itemprop="datePublished">2020-03-31</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+
+
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>学了IO_FILE有一段时间了,现在花点时间把做过的IO例题上传到博客上,例题都是从raycp师傅的github仓库下载的,说是做过的题,其实还是照着师傅们的exp写自己的EXP,不定时更新  </p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pwn/" rel="tag">Pwn</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/03/31/IO_FILE/IO_FILE/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-TCache/TCache" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/18/TCache/TCache/" class="article-date">
-      <time datetime="2020-03-17T18:01:58.000Z" itemprop="datePublished">2020-03-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/TCache/TCache/">TCache</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>写几个在TCache结构下LIBC为2.27的环境下的题,之前学习TCache结构的例题,做一遍看看.<br>后续会不定时更新此栏.   </p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCache/" rel="tag">TCache</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/03/18/TCache/TCache/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/GXZY" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/14/Competition/GXZY/" class="article-date">
-      <time datetime="2020-03-13T16:43:28.000Z" itemprop="datePublished">2020-03-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/03/31/IO_FILE/IO_FILE/">
+                    IO_FILE
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/Competition/GXZY/">GXZY</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Easy-Heap"><a href="#Easy-Heap" class="headerlink" title="Easy_Heap"></a>Easy_Heap</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GXZY-From-XCTF/" rel="tag">GXZY_From_XCTF</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/03/14/Competition/GXZY/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/V-N" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/01/Competition/V-N/" class="article-date">
-      <time datetime="2020-02-29T17:11:38.000Z" itemprop="datePublished">2020-03-01</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/01/Competition/V-N/">V&amp;N公开赛</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Easy-Heap"><a href="#Easy-Heap" class="headerlink" title="Easy_Heap"></a>Easy_Heap</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/V-N/" rel="tag">V&N</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/03/01/Competition/V-N/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/GYCTF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/25/Competition/GYCTF/" class="article-date">
-      <time datetime="2020-02-25T06:20:43.000Z" itemprop="datePublished">2020-02-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/25/Competition/GYCTF/">GYCTF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="BFnote"><a href="#BFnote" class="headerlink" title="BFnote"></a>BFnote</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iChunQiu-GYCTF-2020/" rel="tag">iChunQiu_GYCTF_2020</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/02/25/Competition/GYCTF/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/HGame" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/01/22/Competition/HGame/" class="article-date">
-      <time datetime="2020-01-22T12:46:04.000Z" itemprop="datePublished">2020-01-22</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/Competition/HGame/">HGame</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Week-ONE"><a href="#Week-ONE" class="headerlink" title="Week_ONE"></a>Week_ONE</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HGame/" rel="tag">HGame</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/01/22/Competition/HGame/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-StackOverFlow/Advanced-ROP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/01/15/StackOverFlow/Advanced-ROP/" class="article-date">
-      <time datetime="2020-01-14T16:33:11.000Z" itemprop="datePublished">2020-01-15</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/15/StackOverFlow/Advanced-ROP/">JUMP_SLOT</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="JUMP-SLOT"><a href="#JUMP-SLOT" class="headerlink" title="JUMP_SLOT"></a>JUMP_SLOT</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROP/" rel="tag">ROP</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/01/15/StackOverFlow/Advanced-ROP/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Seccomp/Warm-UP" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/01/13/Seccomp/Warm-UP/" class="article-date">
-      <time datetime="2020-01-13T13:06:56.000Z" itemprop="datePublished">2020-01-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/13/Seccomp/Warm-UP/">Warm_UP</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="Seccomp"><a href="#Seccomp" class="headerlink" title="Seccomp"></a>Seccomp</h2>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Seccomp/" rel="tag">Seccomp</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/01/13/Seccomp/Warm-UP/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
+
   
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#baby-arena-BCTF2018"><span class="toc-number">1.</span> <span class="toc-text">baby_arena_BCTF2018</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">2.</span> <span class="toc-text">下载</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/03/31/IO_FILE/IO_FILE/" title="Next: IO_FILE">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/StackOverFlow/Advanced-ROP/">JUMP_SLOT</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Warm-UP/">Warm_UP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/ROP_Attack/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/Easy_ROP/">Easy ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
