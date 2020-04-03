@@ -1,5 +1,0 @@
-[package]
-name = "codepad"
-version = "0.1.0"
-[dependencies]
-code = { path = "lib/code" }
