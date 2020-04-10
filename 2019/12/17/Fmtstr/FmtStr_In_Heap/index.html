@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="FmtStr In Heap">
+<meta name="description" content="依旧是从CTFWiKi上抄过来的,自己总结了下">
 <meta name="keywords" content="FmtStr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FmtStr In Heap">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;17&#x2F;Fmtstr&#x2F;FmtStr_In_Heap&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="FmtStr In Heap">
+<meta property="og:description" content="依旧是从CTFWiKi上抄过来的,自己总结了下">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-14T14:35:56.941Z">
+<meta property="og:updated_time" content="2020-04-10T16:03:43.824Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -253,8 +253,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="FmtStr-In-Heap"><a href="#FmtStr-In-Heap" class="headerlink" title="FmtStr In Heap"></a>FmtStr In Heap</h2><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># checksec contacts</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     i386-32-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    Canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x8048000)</span></pre></td></tr></table></figure>
+        <p>依旧是从CTFWiKi上抄过来的,自己总结了下</p>
+<a id="more"></a>
+<h2 id="FmtStr-In-Heap"><a href="#FmtStr-In-Heap" class="headerlink" title="FmtStr In Heap"></a>FmtStr In Heap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># checksec contacts</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     i386-32-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    Canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x8048000)</span></pre></td></tr></table></figure>
 <p>查看一番，32位程序，地址随机化未开启，栈保护开启<br>然后IDA分析，发现四个函数，分别为构造，删除，修改，打印联系人，而在第四个函数里面，打印最后一个值时，含有FmtStr漏洞可利用<br>在此处，似乎之前FmtStr的利用方法都无法获得/bin/sh权限，修改Got表会因为多处使用printf函数而导致崩溃,之前发布的那个BSS段利用方法，由于每次结束后，会平衡堆栈，所以多次修改的办法也不行  </p>
 <hr>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>程序中压入栈中的 ebp 值其实保存的是上一个函数的保存 ebp 值的地址，所以我们可以修改其上层函数的保存的 ebp 的值，即上上层函数（即main函数）的 ebp 数值<br>因此，我们可以尝试利用栈迁移的方法，将我们的System_Addr 和 /bin/sh地址 放在BSS段，然后我们利用栈迁移，在最后leave指令的帮助下，修改EBP的值为对应的地址，从而使程序执行我们的命令，最终执行/bin/sh<br>1.通过常规的利用方法，泄漏libc版本，确定System_Addr 以及 Binsh_Addr<br>2.部署我们的利用命令到某地址A上，通常在构造联系人那里<br>3.修改上层函数保存的EBP值为我们(地址A-4)<br>当主程序返回时，会有如下操作<br>    move esp,ebp，将 esp 指向 System_Addr 的地址-4<br>    pop ebp， 将 esp 指向 System_Addr<br>    ret，将 eip 指向 System_Addr，从而获取 Shell  </p>

