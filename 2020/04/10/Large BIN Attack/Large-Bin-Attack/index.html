@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="FMYY&#39;s Blog">
 <meta property="og:description" content="依旧是不定时更新,东拼西凑,到处查看其他师傅的WP,一知半解的写下了此页,然后就是准备写一下不同的方法">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-09T18:46:06.804Z">
+<meta property="og:updated_time" content="2020-04-11T12:15:45.973Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -258,7 +258,7 @@
 <h2 id="2ez4u-LCTF2017"><a href="#2ez4u-LCTF2017" class="headerlink" title="2ez4u-LCTF2017"></a>2ez4u-LCTF2017</h2><h3 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h3><p><a href="./2ez4u/main">MAIN</a> <a href="./2ez4u/libc-2.24.so">LIBC</a> <a href="./2ez4u/global_max_fast.py">GMF</a> <a href="./2ez4u/top_chunk_ptr.py">TOP</a></p>
 <h3 id="Global-Max-Fast"><a href="#Global-Max-Fast" class="headerlink" title="Global_Max_Fast"></a>Global_Max_Fast</h3><p>程序由于只能泄漏chunk-&gt;bk_nextsize域往后的内容,故利用Large Bin Attack  </p>
 <ol>
-<li>Leak the heap_base:通过free掉两个同意IDX的large chunk则可打印出堆地址  </li>
+<li>Leak the heap_base:通过free掉两个同一IDX的large chunk则可打印出堆地址  </li>
 <li>Leak the libc_base:首先布置一个fake_large_chunk,然后通过unlink申请该chunk,由于该large chunk 可以包含一个small chunk,在申请fake_chunk之前,将两个不相邻而大小相同的small chunk扔进unsorted bins,申请fake_chunk时就会进入small bin,然后申请出small bin中的尾块,即可在fake_chunk包含的那个块中写上libc的某地址,进而取得libc_base  </li>
 <li>Global Max Fast:修复包含的small chunk的size域,申请出来然后放进unsorted bins中,通过fake_chunk修改该块的内容,利用unsorted bin attack在global max fast写上一个很大的值,然后再次修改该块的size域,满足free掉的位置处于&amp;_IO_list_all上,并将其内容覆盖为fake_IO_FILE,释放掉会覆盖IO_list_all指针实现劫持,然后由于unsorted bins 损坏,再次申请即可crash 并getshell<br>注意链可能会修复等情况,以及small chunk申请会检测前一个块的fd域  </li>
 </ol>
