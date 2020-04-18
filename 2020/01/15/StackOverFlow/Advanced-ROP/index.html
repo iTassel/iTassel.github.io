@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="JUMP_SLOT">
+<meta name="description" content="延迟绑定">
 <meta name="keywords" content="ROP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JUMP_SLOT">
+<meta property="og:title" content="延迟绑定">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="JUMP_SLOT">
+<meta property="og:description" content="延迟绑定">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;write-plt.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;PLT.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;rel_plt.png">
-<meta property="og:updated_time" content="2020-04-17T12:05:21.177Z">
+<meta property="og:updated_time" content="2020-04-18T10:08:50.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;01&#x2F;15&#x2F;StackOverFlow&#x2F;Advanced-ROP&#x2F;SLOT&#x2F;write-plt.png">
 
@@ -60,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JUMP_SLOT | FMYY&#39;s Blog</title>
+<title>延迟绑定 | FMYY&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -234,7 +234,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JUMP_SLOT
+      延迟绑定
     </h1>
   
 
@@ -255,7 +255,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="JUMP-SLOT"><a href="#JUMP-SLOT" class="headerlink" title="JUMP_SLOT"></a>JUMP_SLOT</h2><a id="more"></a>
+        <h2 id="延迟绑定"><a href="#延迟绑定" class="headerlink" title="延迟绑定"></a>延迟绑定</h2><a id="more"></a>
 <h3 id="了解"><a href="#了解" class="headerlink" title="了解"></a>了解</h3><p>在ELF文件里面，当函数是动态链接时，那么可能会有延迟绑定，第一步会lookup绝对地址，写入全局偏移表中函数GOT地址里面，其中会经历几个步骤，通过必要的信息确定最后的实际函数地址<br>[1].rel.plt节是用于函数重定位，.rel.dyn节是用于变量重定位<br>[2].got节保存全局变量偏移表，.got.plt节保存全局函数偏移表。.got.plt对应着Elf32_Rel结构中r_offset的值.<br>[3].dynsym节包含了动态链接符号表。Elf32_Sym[num]中的num对应着ELF32_R_SYM(Elf32_Rel-&gt;r_info).<br>[4].dynstr节包含了动态链接的字符串。这个节以\x00作为开始和结尾，中间每个字符串也以\x00间隔.<br>[5].plt节是过程链接表。过程链接表把位置独立的函数调用重定向到绝对位置.  </p>
 <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>此次使用32位ELF文件介绍  </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">readelf -r main</span></pre></td></tr></table></figure>
@@ -309,7 +309,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JUMP-SLOT"><span class="toc-number">1.</span> <span class="toc-text">JUMP_SLOT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解"><span class="toc-number">1.1.</span> <span class="toc-text">了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-number">1.5.</span> <span class="toc-text">资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">1.6.</span> <span class="toc-text">下载</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟绑定"><span class="toc-number">1.</span> <span class="toc-text">延迟绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#了解"><span class="toc-number">1.1.</span> <span class="toc-text">了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">1.2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">1.4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资料"><span class="toc-number">1.5.</span> <span class="toc-text">资料</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">1.6.</span> <span class="toc-text">下载</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -363,7 +363,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/Large%20BIN%20Attack/Large-Bin-Attack/">Large_Bin_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/StackOverFlow/Advanced-ROP/">JUMP_SLOT</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Warm-UP/">Warm_UP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/ROP_Attack/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/Easy_ROP/">Easy ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/Large%20BIN%20Attack/Large-Bin-Attack/">Large_Bin_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/15/StackOverFlow/Advanced-ROP/">延迟绑定</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Warm-UP/">Warm_UP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/ROP_Attack/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/Easy_ROP/">Easy ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/%E9%9A%8F%E7%AC%94/Pwn%E9%9A%8F%E7%AC%94/">Pwn随笔</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_Bss/">FmtStr In BSS</a></li></ul>
 
 
 
