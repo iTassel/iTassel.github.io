@@ -23,25 +23,6 @@
     
     
     <entry>
-      <title>Linux_Kernel_I</title>
-      <link href="/2020/04/20/Kernel/Linux_Kernel_I/"/>
-      <url>/2020/04/20/Kernel/Linux_Kernel_I/</url>
-      
-        <content type="html"><![CDATA[<p>堆部分暂时停更,Kernel入门之后恢复更新</p><a id="more"></a><h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><p>首先下载Linux_Kernel的源码,此处下载的源码为<a href="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.6.tar.xz" target="_blank" rel="noopener">Linux_Kernel_5.5.6</a>,编译环境为Ubuntu 18.04,编译源码之前需要安装一些必要的依赖包  </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get install libncurses5-dev libssl-dev build-essential openssl zlibc minizip libidn11-dev libidn11 flex bison</span></pre></td></tr></table></figure><p>Kernel编译配置:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">make menuconfig</span></pre></td></tr></table></figure><p>编译:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">make</span></pre></td></tr></table></figure>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Linux_Kernel </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>HFCTF_2020</title>
       <link href="/2020/04/20/Competition/HFCTF-2020/"/>
       <url>/2020/04/20/Competition/HFCTF-2020/</url>
