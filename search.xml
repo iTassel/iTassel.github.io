@@ -25,27 +25,6 @@
     
     
     <entry>
-      <title>Ret2dl_resolve</title>
-      <link href="/2020/04/25/StackOverFlow/Ret2dl-resolve/"/>
-      <url>/2020/04/25/StackOverFlow/Ret2dl-resolve/</url>
-      
-        <content type="html"><![CDATA[<p>之前学习过一段时间的32位下的ret2dl_resolve利用,后面不常见64位,因此开一页总结一下学习情况</p><a id="more"></a><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>ret2dl_resolve利用是由于延迟绑定而产生的一种利用方法,通过伪造动态链接的重定位信息,令程序错误寻址,从而getshell的方式<br>通常在CTF比赛中,Pwn题常见的为32位的利用方法,然后并不是没有出现过64位的题,而64位的题,又与32位方法有着很大的不同,故准备总结一下两种方法,虽然很多师傅都已经写过了各种各样的文章,我不过是寻着他们的痕迹学习一下.</p><h3 id="解析-32"><a href="#解析-32" class="headerlink" title="解析-32"></a>解析-32</h3><h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><ol><li><a href="http://pwn4.fun/2016/11/09/Return-to-dl-resolve/" target="_blank" rel="noopener">Return-to-dl-resolve</a></li><li><a href="https://ray-cp.github.io/archivers/ret2dl_resolve_analysis#64%E4%BD%8Delf%E7%A8%8B%E5%BA%8F%E7%9A%84ret2dl_resolve" target="_blank" rel="noopener">ret2dl_resolve解析</a></li><li><a href="https://www.b1ndsec.cn/?p=252" target="_blank" rel="noopener">延迟绑定技术原理</a></li><li><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/linux/stackoverflow/advanced-rop-zh/" target="_blank" rel="noopener">ret2_dl_runtime_resolve</a></li></ol><h3 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h3>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> ret2dl_resolve </tag>
-            
-            <tag> Stack </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>NPUCTF</title>
       <link href="/2020/04/21/Competition/NPUCTF/"/>
       <url>/2020/04/21/Competition/NPUCTF/</url>
@@ -469,22 +448,22 @@
     
     
     <entry>
-      <title>Links</title>
-      <link href="/Links/index.html"/>
-      <url>/Links/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="/">风沐云烟</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="https://blog.xanderc.top/" target="_blank" rel="noopener">MZ</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>Links</title>
+      <link href="/Links/index.html"/>
+      <url>/Links/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="/">风沐云烟</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="https://blog.xanderc.top/" target="_blank" rel="noopener">MZ</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p>]]></content>
       
     </entry>
     
