@@ -16,14 +16,14 @@
 
 
 <meta name="description" content="记一次线上AWD,有幸受星盟邀请参加了其四月的线上AWD比赛,十分感谢.">
-<meta name="keywords" content="AWD,PWN">
+<meta name="keywords" content="PWN,AWD">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XMAWD">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;04&#x2F;27&#x2F;AWD&#x2F;XMAWD&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
 <meta property="og:description" content="记一次线上AWD,有幸受星盟邀请参加了其四月的线上AWD比赛,十分感谢.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-26T18:35:36.468Z">
+<meta property="og:updated_time" content="2020-04-26T18:38:28.520Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -257,7 +257,7 @@
           
         <p>记一次线上AWD,有幸受星盟邀请参加了其四月的线上AWD比赛,十分感谢.</p>
 <a id="more"></a>
-<p>其实这算第二次线上AWD了,但是第一次我太菜了,等我写好EXP,其他师傅已经把血拿了,并且已经patch程序，一直在划水,这一次才算是我第一次参加,之前那次什么都没有弄清除,然而这次依旧划水.</p>
+<p>其实这算第二次线上AWD了,但是第一次我太菜了,等我写好EXP,其他师傅已经把血拿了,并且已经patch程序，一直在划水,这一次才算是我第一次参加,之前那次什么都没有弄清楚,然而这次依旧划水.</p>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>首先比赛是从2点整开始直到5点整,AWD比赛给了五个题,其中三个WEB两个PWN,最初PWN题只放了一个PWN2,但是我下载不了文件,ssh连接不上,一直在那里折腾了大概一个小时,然后用sshpass交互连接上了服务器,用scp把文件下载了下来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">'passwd'</span> ssh -p port name@ip</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">'passswd'</span> scp -P port name@ip</span></pre></td></tr></table></figure>
 <h3 id="期间"><a href="#期间" class="headerlink" title="期间"></a>期间</h3><p>我和另外一个师傅一起做PWN题,等我拿到文件时,pwn2也已经被patch了<br>看了下环境PWN2是libc2.23下,这个题和安恒月赛的sales_office类似,UAF,功能齐全,简单就getshell,然而我方PWN2端口已经被干穿了,文件也被bash内置命令改成2333,而我又没有备份,估计被check检测到扣了不少分,于是用了RENEW重新生成镜像,又尝试其他队伍的端口,要么patch了要么和我们一样被干穿了</p>
