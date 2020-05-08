@@ -287,6 +287,141 @@
 
 
   
+    <article id="post-Kernel/Linux_Kernel_Pwn(三)/0CTF2018-baby/README" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/0CTF2018-baby/README/" class="article-date">
+      <time datetime="2020-05-08T14:41:07.063Z" itemprop="datePublished">2020-05-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/0CTF2018-baby/README/">Kernel/Linux_Kernel_Pwn(三)/0CTF2018-baby/README</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="2018-0CTF-Finals-Baby-Kernel"><a href="#2018-0CTF-Finals-Baby-Kernel" class="headerlink" title="2018 0CTF Finals Baby Kernel"></a>2018 0CTF Finals Baby Kernel</h1><p>漏洞类型： <code>Double Fetch</code></p>
+<p>flag： <code>flag{THIS_WILL_BE_YOUR_FLAG_1234}</code></p>
+<h2 id="Writeup"><a href="#Writeup" class="headerlink" title="Writeup"></a>Writeup</h2><p>根据 <code>Double Fetch</code> 漏洞原理，发现此题目存在一个 <code>Double Fetch</code> 漏洞，当用户输入数据通过验证后，再将 <code>flag_str</code> 所指向的地址改为 flag 硬编码地址后，即会输出 flag 内容。</p>
+<p>首先，利用提供的 <code>cmd=0x6666</code> 功能，获取内核中 flag 的加载地址。</p>
+<blockquote>
+<p>内核中以 <code>printk</code> 输出的内容，可以通过 <code>dmesg</code> 命令查看。</p>
+</blockquote>
+<p>然后，构造符合 <code>cmd=0x1337</code> 功能的数据结构，其中 <code>flag_len</code> 可以从硬编码中直接获取为 33， <code>flag_str</code> 指向一个用户空间地址。</p>
+<p>最后，创建一个恶意线程，不断的将 <code>flag_str</code> 所指向的用户态地址修改为 flag 的内核地址以制造竞争条件，从而使其通过驱动中的逐字节比较检查，输出 flag 内容。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">└─[$] &lt;git:(master*)&gt; ./start.sh </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Boot took 0.52 seconds</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">/ $ ./exp</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">[+]flag addr: 0xffffffffc006b028</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">[+]result is :</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">[    3.599210] Your flag is at ffffffffc006b028! But I don<span class="string">'t think you know it'</span>s content</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">[    3.689193] Looks like the flag is not a secret anymore. So here is it flag&#123;THIS_WILL_BE_YOUR_FLAG_1234&#125;</span></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>exp.c</code> 中碰撞次数为0x1000，若不成功，可尝试将 <code>TRYTIME</code> 增大，或多试几次。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Kernel/Linux_Kernel_Pwn(二)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/" class="article-date">
+      <time datetime="2020-05-08T14:21:17.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/">Linux_Kernel_Pwn(ROP)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>此页稍微讲一下ROP与绕过smep寄存器的检测.</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kernel/" rel="tag">Kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROP/" rel="tag">ROP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bypass-smep/" rel="tag">bypass-smep</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Competition/De1CTF" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -392,7 +527,7 @@
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Basic/" rel="tag">Basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kernel/" rel="tag">Kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pwn/" rel="tag">Pwn</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Basic/" rel="tag">Basic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DEBUG/" rel="tag">DEBUG</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kernel/" rel="tag">Kernel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UAF/" rel="tag">UAF</a></li></ul>
     </div>
 
       
@@ -723,136 +858,6 @@
       
         <p class="article-more-link">
           <a href="/2020/04/25/Competition/DASCTF/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/NPUCTF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/21/Competition/NPUCTF/" class="article-date">
-      <time datetime="2020-04-21T13:15:31.000Z" itemprop="datePublished">2020-04-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/Competition/NPUCTF/">NPUCTF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>西工大、北邮、西电联合举办的一场CTF比赛,逼疯了不知多少懵懂的CTFer(我也在里面)</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NPUCTF-2020/" rel="tag">NPUCTF_2020</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/04/21/Competition/NPUCTF/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/HFCTF-2020" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/20/Competition/HFCTF-2020/" class="article-date">
-      <time datetime="2020-04-19T17:15:26.000Z" itemprop="datePublished">2020-04-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/Competition/HFCTF-2020/">HFCTF_2020</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>虎符2020的线上赛部分Pwn题WP,报名被Pass了,只能从其他师傅那里要题</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HFCTF-2020/" rel="tag">HFCTF_2020</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/04/20/Competition/HFCTF-2020/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
