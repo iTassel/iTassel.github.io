@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>Kernel/Linux_Kernel_Pwn(三)/0CTF2018-baby/README</title>
-      <link href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/0CTF2018-baby/README/"/>
-      <url>/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/0CTF2018-baby/README/</url>
-      
-        <content type="html"><![CDATA[<h1 id="2018-0CTF-Finals-Baby-Kernel"><a href="#2018-0CTF-Finals-Baby-Kernel" class="headerlink" title="2018 0CTF Finals Baby Kernel"></a>2018 0CTF Finals Baby Kernel</h1><p>漏洞类型： <code>Double Fetch</code></p><p>flag： <code>flag{THIS_WILL_BE_YOUR_FLAG_1234}</code></p><h2 id="Writeup"><a href="#Writeup" class="headerlink" title="Writeup"></a>Writeup</h2><p>根据 <code>Double Fetch</code> 漏洞原理，发现此题目存在一个 <code>Double Fetch</code> 漏洞，当用户输入数据通过验证后，再将 <code>flag_str</code> 所指向的地址改为 flag 硬编码地址后，即会输出 flag 内容。</p><p>首先，利用提供的 <code>cmd=0x6666</code> 功能，获取内核中 flag 的加载地址。</p><blockquote><p>内核中以 <code>printk</code> 输出的内容，可以通过 <code>dmesg</code> 命令查看。</p></blockquote><p>然后，构造符合 <code>cmd=0x1337</code> 功能的数据结构，其中 <code>flag_len</code> 可以从硬编码中直接获取为 33， <code>flag_str</code> 指向一个用户空间地址。</p><p>最后，创建一个恶意线程，不断的将 <code>flag_str</code> 所指向的用户态地址修改为 flag 的内核地址以制造竞争条件，从而使其通过驱动中的逐字节比较检查，输出 flag 内容。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">└─[$] &lt;git:(master*)&gt; ./start.sh </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Boot took 0.52 seconds</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">/ $ ./exp</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">[+]flag addr: 0xffffffffc006b028</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">[+]result is :</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">[    3.599210] Your flag is at ffffffffc006b028! But I don<span class="string">'t think you know it'</span>s content</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">[    3.689193] Looks like the flag is not a secret anymore. So here is it flag&#123;THIS_WILL_BE_YOUR_FLAG_1234&#125;</span></pre></td></tr></table></figure><blockquote><p><code>exp.c</code> 中碰撞次数为0x1000，若不成功，可尝试将 <code>TRYTIME</code> 增大，或多试几次。</p></blockquote>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux_Kernel_Pwn(ROP)</title>
       <link href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/"/>
       <url>/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/</url>
@@ -593,22 +580,22 @@
     
     
     <entry>
-      <title>Links</title>
-      <link href="/Links/index.html"/>
-      <url>/Links/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="/">风沐云烟</a><br><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="通向大师傅们的神秘地址"><a href="#通向大师傅们的神秘地址" class="headerlink" title="通向大师傅们的神秘地址"></a>通向大师傅们的神秘地址</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="http://djstudy.top/" target="_blank" rel="noopener">Lime</a><br><a href="http://binlep.top/page/2/" target="_blank" rel="noopener">binLep</a></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>Links</title>
+      <link href="/Links/index.html"/>
+      <url>/Links/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="/">风沐云烟</a><br><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="通向大师傅们的神秘地址"><a href="#通向大师傅们的神秘地址" class="headerlink" title="通向大师傅们的神秘地址"></a>通向大师傅们的神秘地址</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="http://djstudy.top/" target="_blank" rel="noopener">Lime</a><br><a href="http://binlep.top/page/2/" target="_blank" rel="noopener">binLep</a></p>]]></content>
       
     </entry>
     
