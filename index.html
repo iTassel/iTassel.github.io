@@ -287,6 +287,128 @@
 
 
   
+    <article id="post-Competition/网鼎杯-2020/boom2/note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/" class="article-date">
+      <time datetime="2020-05-13T10:43:57.769Z" itemprop="datePublished">2020-05-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/">Competition/网鼎杯-2020/boom2/note</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>虚拟栈初始化完之后,RSP+0X18 = SP; RSP+0X20 = BP; RSP+0X28 = RA;<br>00:    RA = BP + OPCODE<em>8<br>01:    RA = OPCODE<br>06:    PUSH BP<br>    MOV BP,SP<br>    SUB SP,OPCODE</em>8<br>08:    MOV SP,BP<br>    POP BP<br>09:    RA = [RA]<br>10:    AL = [RA]<br>11:    [[SP]] = RA<br>    ADD SP,8<br>12:    [[SP]] = RA<br>    RA = [SP]<br>    ADD SP,8<br>13:    PUSH RA<br>14:    RA = [SP] | RA<br>    ADD SP,8<br>15:    RA = [SP] ^ RA<br>    ADD SP,8<br>16:    RA = [SP] &amp; RA<br>    ADD SP,8<br>17:    if [SP] == RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>18:    if [SP] != RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>19:    if [SP] &lt; RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>20:    if [SP] &gt; RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>21:    if [SP] &lt;= RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>22:    if [SP] &gt;= RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>23:    RA = [SP] &lt;&lt; RA<br>    ADD SP,8<br>24:    RA = [SP] &gt;&gt; RA<br>    ADD SP,8<br>25:    RA = [SP] + RA<br>    ADD SP,8<br>26: RA = [SP] - RA<br>    ADD SP,8<br>27:    RA = [SP] * RA<br>    ADD SP,8<br>28:    RA = [SP] / RA<br>    ADD SP,8<br>28:    RA = [SP] % RA<br>    ADD SP,8</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Competition/网鼎杯-2020" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/" class="article-date">
+      <time datetime="2020-05-10T10:27:37.000Z" itemprop="datePublished">2020-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/">网鼎杯_2020</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p>TTTTTTTTCL,菜鸟不配打CTF,和De1CTF一样,打过之后才知道自己是多么的菜</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Partional/" rel="tag">Partional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/" rel="tag">网鼎杯_2020</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Kernel/Linux_Kernel_Pwn(二)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -723,136 +845,6 @@
       
         <p class="article-more-link">
           <a href="/2020/04/26/Magic/Magic-Gadget/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/DASCTF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/25/Competition/DASCTF/" class="article-date">
-      <time datetime="2020-04-25T09:14:28.000Z" itemprop="datePublished">2020-04-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/Competition/DASCTF/">DASCTF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>安恒四月举办的一次月赛,赵师傅说是雨露均沾,应该算是吧</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E6%81%92%E6%9C%88%E8%B5%9B/" rel="tag">安恒月赛</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/04/25/Competition/DASCTF/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Competition/NPUCTF" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/04/21/Competition/NPUCTF/" class="article-date">
-      <time datetime="2020-04-21T13:15:31.000Z" itemprop="datePublished">2020-04-21</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/Competition/NPUCTF/">NPUCTF</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>西工大、北邮、西电联合举办的一场CTF比赛,逼疯了不知多少懵懂的CTFer(我也在里面)</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NPUCTF-2020/" rel="tag">NPUCTF_2020</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2020/04/21/Competition/NPUCTF/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

