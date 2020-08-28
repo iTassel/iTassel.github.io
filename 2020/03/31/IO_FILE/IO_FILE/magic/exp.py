@@ -12,8 +12,8 @@ def gift(index):
 	p.sendlineafter('choice>>','3')
 	p.sendlineafter('chance:',str(index))
 #context.log_level ='DEBUG'
-p = remote('159.138.137.79',52449)
-#p = process('./main')
+#p = remote('159.138.137.79',52449)
+p = process('./main')
 elf = ELF('./main',checksec=False)
 libc = ELF('./libc-2.23.so',checksec=False)
 create()
