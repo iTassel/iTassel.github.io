@@ -2,7 +2,7 @@ from pwn import*
 from RET2DL64 import*
 
 p = process('./main')
-p = remote('39.96.31.211',3005)
+#p = remote('39.96.31.211',3005)
 context.log_level ='DEBUG'
 elf = ELF('./main')
 libc =ELF('./libc-2.23.so',checksec=False)
